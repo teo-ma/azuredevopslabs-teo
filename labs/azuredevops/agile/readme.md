@@ -11,17 +11,17 @@ redirect_from: "/labs/vsts/agile/index.htm"
 <div class="rw-ui-container"></div>
 <a name="Overview"></a>
 
-## Overview ##
+## 概述 ##
 
-In this lab, you will learn about the agile planning and portfolio management tools and processes provided by Azure Boards and how they can help you quickly plan, manage, and track work across your entire team. You will explore the product backlog, sprint backlog, and task boards which can be used to track the flow of work during the course of an iteration. We will also take a look at how the tools have been enhanced in this release to scale for larger teams and organizations.
+在本实验中，您将学习Azure董事会提供的敏捷计划和项目组合管理工具和流程，以及它们如何帮助您快速规划，管理和跟踪整个团队的工作。您将探索产品积压，冲刺积压和任务板，它们可用于跟踪迭代过程中的工作流程。我们还将研究此版本中工具的增强功能，以适应更大的团队和组织。
 
 <div class="bg-slap"><img src="./images/mslearn.png" class="img-icon-cloud" alt="MS teams" style="
     width: 48px; height: 48px;">Want additional learning? Check out the  <a href="https://docs.microsoft.com/en-us/learn/modules/choose-an-agile-approach/" target="_blank"><b><u> Agile approach to software development </u></b></a> module on Microsoft Learn.</div>
 
 <a name="Prerequisites"></a>
-### Prerequisites ###
+### 先决条件 ###
 
-- This lab requires you to complete task 1 from the <a href="../prereq/">prerequisite</a> instructions. (No cloning needed for this lab, skip Task 2)
+- 本实验要求您从 <a href="../prereq/">先决条件</a>中完成任务1 . (此练习无需克隆，请跳过任务2)
 
 <a name="Exercise1"></a>
 ## Exercise 1: Agile Project Management ##
