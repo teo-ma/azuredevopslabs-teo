@@ -24,12 +24,12 @@ redirect_from: "/labs/vsts/agile/index.htm"
 - 本实验要求您从 <a href="../prereq/">先决条件</a>中完成任务1 . (此练习无需克隆，请跳过任务2)
 
 <a name="Exercise1"></a>
-## Exercise 1: Agile Project Management ##
+## Exercise 1: 敏捷项目管理##
 
 <a name="Ex1Task1"></a>
-### Task 1: Working with teams, areas, and iterations ###
+### Task 1: 使用teams, areas和iterations ###
 
-1. Navigate to your Parts Unlimited project on Azure DevOps. It will be something like [https://dev.azure.com/YOURACCOUNT/Parts%20Unlimited](https://dev.azure.com/YOURACCOUNT/Parts Unlimited).
+1. 浏览到Azure DevOps上的Parts Unlimited项目。 URL类似于https://dev.azure.com/YOURACCOUNT/Parts Unlimited。
 
 1. Open the settings page using the **Project settings** navigation located at the bottom left of the page.
 
