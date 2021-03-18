@@ -31,11 +31,11 @@ redirect_from: "/labs/vsts/agile/index.htm"
 
 1. 浏览到Azure DevOps上的Parts Unlimited项目。 URL类似于https://dev.azure.com/YOURACCOUNT/Parts Unlimited。
 
-1. Open the settings page using the **Project settings** navigation located at the bottom left of the page.
+1. 使用页面左下方的 **Project settings** 导航打开设置页面。
 
     ![](images/settings.png)
 
-1. Select the **Teams** tab. There are already a few teams in this project, but you'll make a new one for this lab. Click **New team**.
+1.选择 **Teams**标签。 此项目中已经有几个团队，但是您将为此实验室创建一个新的团队。 点击**New team**。
 
     ![](images/001.png)
 
