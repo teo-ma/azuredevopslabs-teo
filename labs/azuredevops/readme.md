@@ -1,10 +1,10 @@
 ---
-title: Azure DevOps- Hands-on-Labs
+title: Azure DevOps- 动手实验
 layout: homepage
 sidebar: vsts
 permalink: /labs/azuredevops/
 folder: /labs/azuredevops/
-description: Learn how you can plan better, code together and ship faster with Azure DevOps
+description: 了解如何使用Azure DevOps更好地计划，一起编码并更快地发布
 ---
 <div class="vstsMain">
    <div class="productcolmain">
@@ -12,7 +12,7 @@ description: Learn how you can plan better, code together and ship faster with A
          <b>DevOps with Visual Studio Team Services</b> 
       </div>
       <div class="herotext2">
-         Learn how you can plan better, code together and ship faster with Azure DevOps
+         了解如何使用Azure DevOps更好地计划，一起编码并更快地发布
       </div>
    </div>
 </div>
@@ -21,12 +21,15 @@ description: Learn how you can plan better, code together and ship faster with A
 <div class="col-sm-10" style="padding-top:20px">
    <h1>New to Azure DevOps?</h1>
    <div style="margin-top:2px">
-      Don't have an account? No worries! Sign up for a <b>free</b> Azure DevOps organization now and get
+     还没有帐号？ 不用担心！ 立即<b>免费</b>注册一个
       <ul class="tick">
-         <li>Automated CI/CD pipelines</li>
-         <li>Free unlimited private Git repositories</li>
-         <li>Configurable Kanban boards, and </li>
-         <li>Extensive automated and cloud-based load testing tools.</li>
+         <li>自动CI/CD流水线</li>
+         <li>免费的无限私人Git存储库</li>
+         <li>可配置Kanban boards，和 </li>
+         <li>广泛的基于云的自动化负载测试工具。</li>
+
+
+
       </ul>
    </div>
    <a href="https://go.microsoft.com/fwlink/?LinkId=2014881" class="launch-hol" role="button" target="_blank" onclick="pageTracker._trackEvent('SignUp', 'Click', 'New User SignUp');" style="
@@ -39,7 +42,7 @@ description: Learn how you can plan better, code together and ship faster with A
 <div class="col-sm-12">
    <!--h2 class="pading-t-10">Azure DevOps Services</h2--> 
    <div>
-      <p>Simplify and speed up the DevOps process with Azure DevOps services. The following labs will help you to get started with Azure DevOps services to automate software delivery and meet business needs.</p>
+      <p>使用Azure DevOps服务简化并加快DevOps流程。 以下实验将帮助您开始使用Azure DevOps服务，以自动执行软件交付并满足业务需求。</p>
    </div>
 </div>
 <div class="col-sm-12">
@@ -48,23 +51,26 @@ description: Learn how you can plan better, code together and ship faster with A
       <div class="col-sm-4 col-xs-12">
          <div class="bg-color-grey equal-height-column mar-left-40">
             <ul>
-               <li><a href="/labs/azuredevops/agile/" class="barleft">Agile Planning and Portfolio Management with Azure Boards </a></li>
-               <li><a href="/labs/azuredevops/git/" class="barleft">Version Controlling with Azure Repos  </a></li>
-               <li><a href="/labs/azuredevops/packagemanagement/" class="barleft">Package Management with Azure Artifacts</a></li>
-               <li><a href="/labs/azuredevops/continuousintegration/" class="barleft">Enabling Continuous Integration with Azure Pipelines</a></li>
+               <li><a href="/labs/azuredevops/agile/" class="barleft">使用Azure Boards进行敏捷规划和项目组合管理 </a></li>
+               <li><a href="/labs/azuredevops/git/" class="barleft">在Visual Studio Code和Azure DevOps中使用Git进行版本控制  </a></li>
+               <li><a href="/labs/azuredevops/packagemanagement/" class="barleft">使用Azure Artifacts进行程序包管理</a></li>
+               <li><a href="/labs/azuredevops/continuousintegration/" class="barleft">使用Azure Pipelines实现持续集成</a></li>
             </ul>
          </div>
       </div>
       <div class="col-sm-4 col-xs-12">
          <div class="bg-color-grey equal-height-column mar-left-40">
             <ul>
-               <li><a href="/labs/azuredevops/continuousdeployment/" class="barleft">Embracing Continuous Delivery with Azure Pipelines</a></li>
-               <li><a href="/labs/azuredevops/testmanagement/" class="barleft">Test Planning and Management with Azure Test Plans</a></li>
-               <li><a href="/labs/azuredevops/exploratorytesting/" class="barleft">Exploratory Testing with Azure Test Plans</a></li>
-               <li><a href="/labs/azuredevops/load/" class="barleft">Web Application Load and Performance Testing</a></li>
+               <li><a href="/labs/azuredevops/continuousdeployment/" class="barleft">通过Azure Pipelines拥抱持续交付</a></li>
+               <li><a href="/labs/azuredevops/testmanagement/" class="barleft">使用Azure Test Plans进行测试计划和管理</a></li>
+               <li><a href="/labs/azuredevops/exploratorytesting/" class="barleft">使用Azure Test Plans测试计划进行探索性测试</a></li>
+             /*
+              <li><a href="/labs/azuredevops/load/" class="barleft">Web Application Load and Performance Testing</a></li>
+            */
             </ul>
          </div>
       </div>
+      */
       <div class="col-sm-4 col-xs-12">
          <div class="bg-color-grey equal-height-column mar-left-40">
             <ul>
@@ -75,28 +81,29 @@ description: Learn how you can plan better, code together and ship faster with A
             </ul>
          </div>
       </div>
+      */
    </div>
 </div>
 <div class="col-sm-12">
    <h2>Prerequisites</h2>
-   In order to complete these labs you will need:
+   为了完成这些实验，您需要：
    <ul>
       <li>
-         <strong>Azure DevOps services Organization:</strong> Of course! you will need an Azure DevOps services account. If you don’t have one, you can sign up for one, from <a href="https://www.visualstudio.com/" target="_blank">here</a>
+         <strong>Azure DevOps services Organization:</strong> 您需要有一个Azure DevOps services account. 如果没有，您可以从这里注册<a href="https://www.visualstudio.com/" target="_blank">here</a>
       </li>
       <li>
-         <strong>Microsoft Azure Account</strong>: You will need a valid and active Azure account. If you do not have one, 
+         <strong>Microsoft Azure Account</strong>: 您需要一个Azure账号. 如果没有, 
          <ul>
             <li>
-               You can create a <a href="https://azure.microsoft.com/en-us/free/" target="_blank">free Azure account</a> and enjoy 12 months of free Azure services
+               您可以创建一个<a href="https://azure.microsoft.com/en-us/free/" target="_blank">免费 Azure account</a> and enjoy 12 months of free Azure services
             </li>
             <li>
-               If you are a Visual Studio Active Subscriber, you are entitled for a $50-$150 credit per month. You can refer to this <a href="https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/" target="_blank">link</a> to find out more including how to activate and start using your monthly Azure credit.
+               如果您是Visual Studio Active Subscriber，则有权每月获得$ 50- $ 150的信用额。 你可以参考这个<a href="https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/" target="_blank">link</a> 了解更多信息，包括如何激活和开始使用您的每月Azure信用额。
             </li>
          </ul>
       </li>
       <li>
-         <a href="https://azuredevopsdemogenerator.azurewebsites.net" target="_blank"><strong>Azure DevOps Demo Generator:</strong></a> You can use the Azure DevOps Demo Generator to provision a project with pre-defined data on to your Azure DevOps services organization.
+         <a href="https://azuredevopsdemogenerator.azurewebsites.net" target="_blank"><strong> Azure DevOps演示生成器：</strong> </a>您可以使用Azure DevOps演示生成器将包含预定义数据的项目置备到Azure DevOps服务组织中。
       </li>
    </ul>
 </div>
