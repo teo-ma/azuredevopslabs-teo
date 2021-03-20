@@ -1,13 +1,14 @@
 ---
-标题：在Visual Studio Code和Azure DevOps中使用Git进行版本控制
-布局：页面
-侧边栏：vsts
-固定链接：/ labs / azuredevops / git /
-文件夹：/ labs / azuredevops / git /
-版本：实验室版本-1.31.1
-已更新：最近更新-2020年6月11日
-redirect_from：“ / labs / vsts / git / index.htm”
+title: 在Visual Studio Code和Azure DevOps中使用Git进行版本控制
+layout: page
+sidebar: vsts
+permalink: /labs/azuredevops/git/
+folder: /labs/azuredevops/git/
+version: Lab version - 1.31.1
+updated: Last updated - 06/11/2020
+redirect_from: "/labs/vsts/git/index.htm"
 ---
+
 <div class =“ rw-ui-container”> </ div>
 <aname="概述"></a>
 
