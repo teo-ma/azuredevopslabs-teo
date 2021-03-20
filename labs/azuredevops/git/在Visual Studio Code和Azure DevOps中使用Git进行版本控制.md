@@ -1,5 +1,5 @@
 ---
-title: Version Controlling with Git in Visual Studio Code and Azure DevOps
+title: 在Visual Studio Code和Azure DevOps中使用Git进行版本控制
 layout: page
 sidebar: vsts
 permalink: /labs/azuredevops/git/
@@ -9,12 +9,8 @@ updated: Last updated - 06/11/2020
 redirect_from: "/labs/vsts/git/index.htm"
 ---
 
-
-# 在Visual Studio Code和Azure DevOps中使用Git进行版本控制
-
->在https://aka.ms/devopslabs上查看教程“在Visual Studio Code和Azure DevOps中使用Git进行版本控制”以及更多内容。
-
-[主页]（https://azuredevopslabs.com//default.html）/在Visual Studio Code和Azure DevOps中使用Git进行版本控制
+<div class="rw-ui-container"></div>
+<a name="Overview"></a>
 
 Azure DevOps支持两种类型的版本控制，Git和Team Foundation版本控制（TFVC）。这是两个版本控制系统的快速概述：
 
