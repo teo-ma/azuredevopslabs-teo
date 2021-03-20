@@ -64,24 +64,24 @@ description: 了解如何使用Azure DevOps更好地计划，一起编码并更�
                <li><a href="/labs/azuredevops/continuousdeployment/" class="barleft">通过Azure Pipelines拥抱持续交付</a></li>
                <li><a href="/labs/azuredevops/testmanagement/" class="barleft">使用Azure Test Plans进行测试计划和管理</a></li>
                <li><a href="/labs/azuredevops/exploratorytesting/" class="barleft">使用Azure Test Plans测试计划进行探索性测试</a></li>
-            /*:
-             * <li><a href="/labs/azuredevops/load/" class="barleft">Web Application Load and *Performance Testing</a></li>
-            */
+            ``:
+             `` <li><a href="/labs/azuredevops/load/" class="barleft">Web Application Load and ``Performance Testing</a></li>
+            ``
             </ul>
          </div>
       </div>
-      /*:
-       *<div class="col-sm-4 col-xs-12">
-       *  <div class="bg-color-grey equal-height-column mar-left-40">
-       *    <ul>
-       *        <li><a href="/labs/azuredevops/deliveryplans/" class="barleft">Managing Project *Schedules across teams with Delivery Plans</a></li>
-       *        <li><a href="/labs/azuredevops/sonarcloud/" class="barleft">Managing Technical Debt *with Azure DevOps and SonarCloud</a></li>
-        *       <li><a href="/labs/azuredevops/wiki/" class="barleft">Collaborating with Azure *DevOps Wiki</a></li>
-        *       <li><a href="/labs/azuredevops/yaml/" class="barleft">Configuring Build as Code with *  YAML in Azure DevOps</a></li>
-        *    </ul>
-        * </div>
-      * </div>
-      */
+      ``:
+       ``<div class="col-sm-4 col-xs-12">
+       ``  <div class="bg-color-grey equal-height-column mar-left-40">
+       ``    <ul>
+       ``        <li><a href="/labs/azuredevops/deliveryplans/" class="barleft">Managing Project ``Schedules across teams with Delivery Plans</a></li>
+       ``        <li><a href="/labs/azuredevops/sonarcloud/" class="barleft">Managing Technical Debt ``with Azure DevOps and SonarCloud</a></li>
+        ``       <li><a href="/labs/azuredevops/wiki/" class="barleft">Collaborating with Azure ``DevOps Wiki</a></li>
+        ``       <li><a href="/labs/azuredevops/yaml/" class="barleft">Configuring Build as Code with ``  YAML in Azure DevOps</a></li>
+        ``    </ul>
+        `` </div>
+      `` </div>
+      ``
    </div>
 </div>
 <div class="col-sm-12">
