@@ -35,9 +35,9 @@ redirect_from: "/labs/vsts/continuousintegration/index.htm"
 ### 任务1：从模板创建基本构建流水线 ###
 
 1. 导航到你的Azure DevOps上的team project。
-  
 
- 1. 导航到**Pipelines \| Pipelines**。
+1. 导航到**Pipelines \| Pipelines**。
+
   ![](images/000.png)
 
 1. 打开（单击）现有的流水线 **PartsUnlimitedE2E **（由demo生成器工具创建），然后单击 **Edit** 。
@@ -50,9 +50,7 @@ redirect_from: "/labs/vsts/continuousintegration/index.htm"
 
 1. 导航回到 **Pipelines \| Pipelines**，然后单击**New pipeline**以创建新的构建流水线。
 
-
  ![](images/001.png)
-
 
 1. 构建流水线的默认选项涉及使用YAML定义过程。如果您对此感兴趣，请使用另外的Lab。对于本实验，使用经典模式。单击**use the classic editor**。
 
@@ -92,7 +90,7 @@ redirect_from: "/labs/vsts/continuousintegration/index.htm"
 
 1. 选择 **History** 选项卡。这里还没有任何东西，但是它将显示您对构建定义进行的更改的历史记录。
 
- ![](images/011. png)
+ ![](images/011.png)
 
 1. 选择 **Save & Queue \| Save & Queue** 保存并排队一个新的版本。
 
@@ -103,7 +101,7 @@ redirect_from: "/labs/vsts/continuousintegration/index.htm"
  ![](images/013.png)
 
 <a name="Ex1Task2"> </a>
-###任务2：跟踪和审查构建(biuld)###
+### 任务2：跟踪和审查构建(biuld) ###
 
 1. 根据负载，构建可能需要在队列中等待片刻。
 
@@ -130,7 +128,7 @@ redirect_from: "/labs/vsts/continuousintegration/index.htm"
  ![](images/019.png)
 
 <a name="Ex1Task3"> </a>
-###任务3：调用持续集成版本###
+### 任务3：调用持续集成版本 ###
 
 1. 较早地配置了该版本以支持持续集成。使用**Repos \| Files**浏览该项目的Code。
 
@@ -138,7 +136,7 @@ redirect_from: "/labs/vsts/continuousintegration/index.htm"
 
 1. 打开文件 **PartsUnlimited-aspnet45/src/PartsUnlimitedWebsite/Views/Home/Index.cshtml**。
 
- ![](images/021. png)
+ ![](images/021.png)
 
 1. 单击**Edit**。
 
@@ -162,8 +160,4 @@ redirect_from: "/labs/vsts/continuousintegration/index.htm"
 
 1. 此构建应像先前的构建一样运行并成功。
 
-<<<<<<< HEAD
  ![](images/027.png)
-=======
-![](images/027.png)
->>>>>>> eb650147476983080aebe59b40fba000658fd8e1
