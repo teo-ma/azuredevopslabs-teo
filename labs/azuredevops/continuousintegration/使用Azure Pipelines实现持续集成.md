@@ -1,14 +1,4 @@
 ---
-标题：使用Azure Pipelines实现持续集成
-布局：页面
-侧边栏：vsts
-固定链接：/ labs / azuredevops / continuousintegration /
-文件夹：/ labs / azuredevops / continuousintegration /
-版本：实验室版本-1.37.1
-更新：最近更新-2020/05/11
-redirect_from：“ / labs / vsts / continuousintegration / index.htm”
----
----
 title: 使用Azure Pipelines实现持续集成
 layout: page
 sidebar: vsts
@@ -18,6 +8,7 @@ version: Lab version - 1.37.1
 updated: Last updated - 03/21/2021
 redirect_from: "/labs/vsts/continuousintegration/index.htm"
 ---
+
 <div class="rw-ui-container"></div>
 <a name="Overview"></a>
 # 使用Azure Pipelines实现持续集成
