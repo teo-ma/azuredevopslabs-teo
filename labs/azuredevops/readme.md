@@ -46,7 +46,7 @@ description: 了解如何使用Azure DevOps更好地计划，一起编码并更�
    </div>
 </div>
 <div class="col-sm-12">
-   <h2>Getting started</h2>
+   <h2>动手实验</h2>
    <div class="row equal-height-columns">
       <div class="col-sm-4 col-xs-12">
          <div class="bg-color-grey equal-height-column mar-left-40">
@@ -71,7 +71,7 @@ description: 了解如何使用Azure DevOps更好地计划，一起编码并更�
    </div>
 </div>
 <div class="col-sm-12">
-   <h2>Prerequisites</h2>
+   <h2>动手实验开始前的准备工作</h2>
    为了完成这些实验，您需要：
    <ul>
       <li>

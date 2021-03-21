@@ -1,5 +1,5 @@
 ---
-title: Version Controlling with Git in Visual Studio Code and Azure DevOps
+title: 在Visual Studio Code和Azure DevOps中使用Git进行版本控制
 layout: page
 sidebar: vsts
 permalink: /labs/azuredevops/git/
@@ -8,437 +8,438 @@ version: Lab version - 1.31.1
 updated: Last updated - 06/11/2020
 redirect_from: "/labs/vsts/git/index.htm"
 ---
-<div class="rw-ui-container"></div>
-<a name="Overview"></a>
 
-## Overview ##
+<div class =“ rw-ui-container”> </ div>
+<aname="概述"></a>
 
-Azure DevOps supports two types of version control, Git and Team Foundation Version Control (TFVC). Here is a quick overview of the two version control systems:
+## 概述 ##
 
-- **Team Foundation Version Control (TFVC)**: TFVC is a centralized version control system. Typically, team members have only one version of each file on their dev machines. Historical data is maintained only on the server. Branches are path-based and created on the server.
+Azure DevOps支持两种类型的版本控制，Git和Team Foundation版本控制（TFVC）。这是两个版本控制系统的快速概述：
 
-- **Git**: Git is a distributed version control system. Git repositories can live locally (such as on a developer's machine). Each developer has a copy of the source repository on their dev machine. Developers can commit each set of changes on their dev machine and perform version control operations such as history and compare without a network connection.
+-**Team Foundation Version Control (TFVC)**:TFVC是集中式版本控制系统。通常，团队成员在其开发机器上每个文件只有一个版本。历史数据仅在服务器上维护。分支是基于路径的，并在服务器上创建。
 
-Git is the default version control provider for new projects. You should use Git for version control in your projects unless you have a specific need for centralized version control features in TFVC.
+-**Git**: Git是一个分布式版本控制系统。 Git存储库可以位于本地（例如，在开发人员的机器上）。每个开发人员在其开发机上都有源存储库的副本。开发人员可以在其开发机器上提交每组更改，并执行版本控制操作（例如历史记录）并在没有网络连接的情况下进行比较。
 
-In this lab, you will learn how to establish a local Git repository, which can easily be synchronized with a centralized Git repository in Azure DevOps. In addition, you will learn about Git branching and merging support. You will use Visual Studio Code, but the same processes apply for using any Git-compatible client with Azure DevOps.
+Git是新项目的默认版本控制提供程序。除非您特别需要TFVC中的集中式版本控制功能，否则应在项目中使用Git进行版本控制。
 
-<a name="Prerequisites"></a>
-### Prerequisites ###
+在本实验中，您将学习如何建立本地Git存储库，可以轻松地将其与Azure DevOps中的集中式Git存储库同步。此外，您还将了解有关Git分支和合并支持的信息。您将使用Visual Studio Code，但是相同的过程适用于将任何与Git兼容的客户端与Azure DevOps一起使用。
 
-- [Visual Studio Code](https://code.visualstudio.com/) with the [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) extension installed.
+<a name="Prerequisites"> </a>
+###先决条件###
 
-- [Git for Windows](https://gitforwindows.org/) 2.21.0 or later.
+-安装[Visual Studio Code](https://code.visualstudio.com/) 及扩展包 [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 
-- This lab requires you to complete task 1 from the [prerequisite instructions](../prereq) (Skip cloning, it is done in the exercise).
+-[适用于Windows的Git]（https://gitforwindows.org/）2.21.0或更高版本。
 
-<a name="Exercise1"></a>
-## Exercise 1: Configuring the lab environment ##
+-本实验要求您从[先决条件说明](../prereq) 中完成任务1（跳过克隆，在练习中完成）。
 
-<a name="Ex1Task1"></a>
-### Task 1: Configuring Visual Studio Code ###
+<a name="Exercise1"> </a>
+## 练习1：配置实验室环境 ##
 
-1. Open **Visual Studio Code**. In this task, you will configure a Git credential helper to securely store the Git credentials used to communicate with Azure DevOps. If you have already configured a credential helper and Git identity, you can skip to the next task.
+<a name="Ex1Task1"> </a>
+### 任务1：配置Visual Studio Code ###
 
-1. From the main menu, select **Terminal \| New Terminal** to open a terminal window.
+1.打开**Visual Studio Code**。在此任务中，您将配置Git凭据帮助器以安全地存储用于与Azure DevOps通信的Git凭据。如果您已经配置了凭据助手和Git身份，则可以跳到下一个任务。
 
-1. Execute the command below to configure a credential helper.
+1.从主菜单中，选择 **Terminal \| New Terminal**以打开终端窗口。
+
+1.执行以下命令以配置凭据帮助器。
 
     ```
     git config --global credential.helper wincred
     ```
-1. The commands below will configure your user name and email for Git commits. Replace the parameters with your preferred user name and email and execute them.
+1.下面的命令将为Git提交配置您的用户名和电子邮件。将参数替换为您的首选用户名并通过电子邮件发送并执行它们。
 
     ```
     git config --global user.name "John Doe"
     git config --global user.email johndoe@example.com
     ```
 
-<a name="Exercise2"></a>
-## Exercise 2: Cloning an existing repository ##
+  
+<a name="Exercise2"> </a>
+## 练习2：克隆现有存储库 ##
 
-<a name="Ex2Task1"></a>
-### Task 1: Cloning an existing repository ###
+<a name="Ex2Task1"> </a>
+###任务1：克隆现有存储库###
 
-1. In a browser tab, navigate to your team project on Azure DevOps.
+1.在浏览器选项卡中，导航到Azure DevOps上的team project。
 
-1. Getting a local copy of a Git repo is called "cloning". Every mainstream development tool supports this and will be able to connect to Azure Repos to pull down the latest source to work with. Navigate to the **Repos** hub.
+1.获取Git存储库的本地副本称为“克隆(cloning)”。每个主流开发工具都支持此功能，并且将能够连接到Azure Repos来获取最新的可使用资源。导航到**Repos**中心。
 
-    ![](images/000.png)
+   ![](images/000.png)   
 
-1. Click **Clone**.
+1.单击**Clone**。
 
-    ![](images/001.png)
+   ![](images/001.png)
 
-1. Click the **Copy to clipboard** button next to the repo clone URL. You can plug this URL into any Git-compatible tool to get a copy of the codebase.
+1.单击回购克隆URL旁边的“复制到剪贴板”按钮。您可以将此URL插入任何与Git兼容的工具中，以获取代码库的副本。
 
-    ![](images/002.png)
+   ![](images/002.png)
 
-1. Open an instance of **Visual Studio Code**.
+1.打开**Visual Studio Code**的实例。
 
-1. Press **Ctrl+Shift+P** to show the **Command Palette**. The Command Palette provides an easy and convenient way to access a wide variety of tasks, including those provided by 3rd party extensions.
+1.按**Ctrl+Shift+P**显示**Command Palette**。命令面板提供了一种轻松便捷的方法来访问各种任务，包括第三方扩展提供的任务。
 
-1. Execute the **Git: Clone** command. It may help to type **"Git"** to bring it to the shortlist.
+1.执行**Git：Clone**命令。输入**Git** 使其进入候选列表可能会有所帮助。
 
-    ![](images/003.png)
+   ![](images/003.png)
 
-1. Paste in the URL to your repo and press **Enter**.
+1.将URL粘贴到您的仓库中，然后按**Enter**。
 
-    ![](images/004.png)
+   ![](images/004.png)
 
-1. Select a local path to clone the repo to.
+1.选择一个本地路径以克隆存储库。
 
-1. When prompted, log in to your Azure DevOps account.
+1.出现提示时，登录到您的Azure DevOps帐户。
 
-1. Once the cloning has completed, click **Open** to open the cloned repository. You can ignore any warnings raised about opening the projects. The solution may not be in a buildable state, but that's okay since we're going to focus on working with Git and building the project itself is not necessary.
+1.克隆完成后，单击**Open**以打开克隆的存储库。您可以忽略有关打开项目的任何警告。解决方案可能不是处于可构建状态，但这没关系，因为我们将专注于与Git一起工作，并且不需要构建项目本身。
 
-    ![](images/005_new.png)
+   ![](images/005_new.png)
 
 
-<a name="Exercise3"></a>
-## Exercise 3: Saving work with commits ##
+<a name="Exercise3"> </a>
+##练习3：通过提交保存工作##
 
-When you make changes to your files, Git will record the changes in the local repository. You can select the changes that you want to commit by staging the changes. Commits are always made against your local Git repository, so you don't have to worry about the commit being perfect or ready to share with others. You can make more commits as you continue to work and push the changes to others when they are ready to be shared.
+当您对文件进行更改时，Git会将更改记录在本地存储库中。您可以通过暂存更改来选择要提交的更改。提交总是针对您本地的Git存储库，因此您不必担心提交是完美的或准备与他人共享。您可以在继续工作时进行更多提交，并在准备好将其共享时将更改推送给其他人。
 
-What's in a commit?
+提交中有什么内容？
 
-Git commits consists of the following:
+Git提交包含以下内容：
 
-- The file(s) changed in the commit. Git keeps the contents of all file changes in your repo in the commits. This keeps it fast and allows intelligent merging.
+-文件在提交中已更改。 Git在提交中将所有文件更改的内容保留在您的存储库中。这样可以使其保持快速并允许智能合并。
 
-- A reference to the parent commit(s). Git manages your code history using these references.
+-对父提交的引用。 Git使用这些引用来管理您的代码历史记录。
 
-- A message describing a commit. You give this message to Git when you create the commit. It's a good idea to keep this message descriptive, but to the point.
+-描述提交的消息。您在创建提交时将此消息提供给Git。保持此消息的描述性是一个好主意，但要切合实际。
 
-<a name="Ex3Task1"></a>
-### Task 1: Committing changes ###
+<a name="Ex3Task1"> </a>
+###任务1：进行更改###
 
-1. From the **Explorer** tab, open **/PartsUnlimited-aspnet45/src/PartsUnlimitedWebsite/Models/CartItem.cs**.
+1.从“资源管理器”选项卡中，打开 **/PartsUnlimited-aspnet45/src/PartsUnlimitedWebsite/Models/CartItem.cs**。
 
-    ![](images/012.png)
+   ![](images/012.png)
 
-1. Add a comment to the file. It doesn't really matter what the comment is since the goal is just to make a change. Press **Ctrl+S** to save the file.
+1.在文件中添加注释。评论的内容并不重要，因为目标只是进行更改。按**Ctrl+S**保存文件。
 
-    ![](images/013.png)
+   ![](images/013.png)
 
-1. Select the **Source Control** tab to see the one change to the solution.
+1.选择**Source Control**选项卡以查看解决方案的一项更改。
 
-    ![](images/014.png)
+   ![](images/014.png)
 
-1. Enter a commit message of **"My commit"** and press **Ctrl+Enter** to commit it locally.
+1.输入**My commit**的提交消息，然后按**Ctrl+Enter**在本地提交。
 
-    ![](images/015.png)
+   ![](images/015.png)
 
-1. If asked whether you would like to automatically stage your changes and commit them directly, click **Always**. We will discuss **staging** later in the lab.
+1.如果询问您是否要自动进行更改并直接提交更改，请单击**Always**。我们将在稍后的实验中讨论**staging**。
 
-    ![](images/016.png)
+   ![](images/016.png)
 
-1. Click the **Synchronize Changes** button to synchronize your changes with the server. Confirm the sync if prompted.
+1.单击**Synchronize Changes**按钮以将您的更改与服务器同步。如果出现提示，请确认同步。
 
-    ![](images/017.png)
+   ![](images/017.png)
 
-<a name="Ex3Task2"></a>
-### Task 2: Reviewing commits ###
+<a name="Ex3Task2"> </a>
+###任务2：审阅提交###
 
-1. Switch to the Azure DevOps browser tab. You can review the latest commits on Azure DevOps under the **Commits** tab of the **Repos** hub.
+1.切换到Azure DevOps浏览器选项卡。您可以在**Repos**中心的**Commits**选项卡下查看Azure DevOps上的最新提交。
 
-    ![](images/018.png)
+   ![](images/018.png)
 
-1. The recent commit should be right at the top.
+1.最近的提交应该在顶部。
 
-    ![](images/019.png)
+   ![](images/019.png)
 
-<a name="Ex3Task3"></a>
-### Task 3: Staging changes ###
+<a name="Ex3Task3"> </a>
+###任务3：暂存更改###
 
-Staging changes allows you to selectively add certain files to a commit while passing over the changes made in other files.
+暂存更改使您可以有选择地将某些文件添加到提交中，而忽略其他文件中所做的更改。
 
-1. Return to **Visual Studio Code**.
+1.返回到**Visual Studio Code**。
 
-1. Update the open **CartItem.cs** class by editing the comment you made earlier and saving the file.
+1.通过编辑您之前的注释并保存文件来更新打开的**CartItem.cs**类。
 
-    ![](images/020.png)
+   ![](images/020.png)
 
-1. Open **Category.cs** as well.
+1.同时打开**Category.cs**。
 
-    ![](images/021.png)
+   ![](images/021.png)
 
-1. Add a new comment to **Category.cs** so there will be two files with changes. Save the file.
+1.在**Category.cs**中添加一个新注释，这样将有两个具有更改的文件。保存文件。
 
-    ![](images/022.png)
+   ![](images/022.png)
 
-1. From the **Source Control** tab, click the **Stage Changes** button for **CartItem.cs**.
+1.在**Source Control** 选项卡上，为**CartItem.cs**单击**Stage Changes**按钮。
 
-    ![](images/023.png)
+   ![](images/023.png)
 
-1. This will prepare **CartItem.cs** for committing without **Category.cs**.
+1.这将准备**CartItem.cs**以便在没有**Category.cs**的情况下进行提交。
 
-    ![](images/024.png)
+   ![](images/024.png)
 
-1. Enter a comment of **"Added comments"**. From the **More Actions** dropdown, select **Commit Staged**.
+1.输入 **"Added comments"**的评论。从 **More Actions** 下拉列表中，选择**Commit Staged**。
 
-    ![](images/025_new.png)
+   ![](images/025_new.png)
 
-1. Click the **Synchronize Changes** button to synchronize the committed changes with the server. Note that since only the staged changes were committed, the other changes are still pending locally.
+1.单击**Synchronize Changes**按钮以将提交的更改与服务器同步。请注意，由于仅提交了分阶段的更改，因此其他更改仍在本地挂起。
 
-    ![](images/026.png)
+   ![](images/026.png)
 
-<a name="Exercise4"></a>
-## Exercise 4: Reviewing history ##
+<a name="Exercise4"> </a>
+##练习4：查看历史记录##
 
-Git uses the parent reference information stored in each commit to manage a full history of your development. You can easily review this commit history to find out when file changes were made and determine differences between versions of your code using the terminal or from one of the many Visual Studio Code extensions available. You can also review changes using the Azure DevOps portal.
+Git使用存储在每个提交中的父级参考信息来管理开发的完整历史记录。您可以轻松地查看此提交历史记录，以找出何时进行文件更改，并使用终端或从许多可用的Visual Studio Code扩展之一中确定代码版本之间的差异。您还可以使用Azure DevOps门户查看更改。
 
-Git's use of the **Branches and Merges** feature works through pull requests, so the commit history of your development doesn't necessarily form a straight, chronological line. When you use history to compare versions, think in terms of file changes between two commits instead of file changes between two points in time. A recent change to a file in the master branch may have come from a commit created two weeks ago in a feature branch but was only merged yesterday.
+Git对**Branches and Merges**功能的使用通过请求请求起作用，因此开发的提交历史记录不一定会形成一条按时间顺序排列的直线。当您使用历史记录比较版本时，请考虑两次提交之间的文件更改，而不是两个时间点之间的文件更改。 master分支中文件的最新更改可能来自两周前在feature分支中创建的提交，但直到昨天才合并。
 
-<a name="Ex4Task1"></a>
-### Task 1: Comparing files ###
+<a name="Ex4Task1"> </a>
+###任务1：比较文件###
 
-1. In the **Source Control** tab, select **Category.cs**.
+1.在**Source Control**选项卡中，选择**Category.cs**。
 
-    ![](images/027.png)
+   ![](images/027.png)
 
-1. A comparison view is opened to enable you to easily locate the changes you've made. In this case, it's just the one comment.
+1.将打开一个比较视图，使您可以轻松找到所做的更改。在这种情况下，这只是一条评论。
 
-    ![](images/028.png)
+   ![](images/028.png)
 
 
-1. Go to the  **Commits** view in **Azure DevOps** to locate some of the source branches and merges. These provide a convenient way to visualize when and how changes were made to the source.
+1.转到**Azure DevOps** 中的 **Commits**视图，以找到一些源分支和合并。这些提供了一种方便的方式来可视化对源进行更改的时间和方式。
 
-    ![](images/031.png)
+   ![](images/031.png)
 
-1. From the dropdown for **Merged PR 27**, select **Browse Files**.
+1.从**Merged PR 27**下拉菜单中，选择**Browse Files**。
 
-    ![](images/032_new.png)
+   ![](images/032_new.png)
 
-1. This view offers the ability to navigate around the state of the source at that commit so you can review and download those files.
+1.此视图提供了在该提交时浏览源状态的功能，因此您可以查看和下载这些文件。
 
-    ![](images/033_new.png)
+   ![](images/033_new.png)
 
-<a name="Exercise5"></a>
-## Exercise 5: Working with branches ##
+<a name="Exercise5"> </a>
+##练习5：使用分支机构##
 
-You can manage the work in your Azure DevOps Git repo from the **Branches** view on the web. You can also customize the view to track the branches you care most about so you can stay on top of changes made by your team.
+您可以从Web上的“分支”视图在Azure DevOps Git存储库中管理工作。您还可以自定义视图以跟踪您最关心的**Branches**，以便您可以掌握团队所做的更改。
 
-Committing changes to a branch will not affect other branches and you can share branches with others without having to merge the changes into the main project. You can also create new branches to isolate changes for a feature or a bug fix from your master branch and other work. Since the branches are lightweight, switching between branches is quick and easy. Git does not create multiple copies of your source when working with branches, but rather uses the history information stored in commits to recreate the files on a branch when you start working on it. Your Git workflow should create and use branches for managing features and bugfixes. The rest of the Git workflow, such as sharing code and reviewing code with pull requests, all work through branches. Isolating work in branches makes it very simple to change what you are working on by simply changing your current branch.
+向分支提交更改不会影响其他分支，您可以与其他分支共享分支，而不必将更改合并到主项目中。您还可以创建新分支，以将功能或错误修复的更改与您的主分支和其他工作隔离开。由于分支是轻量级的，因此在分支之间进行切换既快捷又容易。当使用分支时，Git不会创建源的多个副本，而是在您开始处理分支时使用提交中存储的历史记录信息在分支上重新创建文件。您的Git工作流程应创建并使用分支机构来管理功能和错误修正。 Git工作流程的其余部分，例如共享代码和使用拉取请求查看代码，全部通过分支进行。隔离分支中的工作使通过简单地更改当前分支来更改正在处理的内容变得非常简单。
 
-<a name="Ex5Task1"></a>
-### Task 1: Creating a new branch in your local repository ###
+<a name="Ex5Task1"> </a>
+###任务1：在本地存储库中创建一个新分支###
 
-1. Return to **Visual Studio Code**.
+1.返回到 **Visual Studio Code**。
 
-1. Click the **master** branch from the bottom left.
+1.单击左下方的**master**分支。
 
-    ![](images/034.png)
+   ![](images/034.png)
 
-1. Select **Create new branch from...**.
+1.选择 **Create new branch from...**。
 
-    ![](images/035.png)
+   ![](images/035.png)
 
-1. Enter the name **"dev"** for the new branch and press **Enter**.
+1.为新分支输入名称**dev** 并按**Enter**。
 
-    ![](images/036.png)
+   ![](images/036.png)
 
-1. Select the **master** as the reference branch.
+1.选择**master**作为参考分支。
 
-    ![](images/037.png)
+   ![](images/037.png)
 
-1. You are now working on that branch.
+1.您现在正在该分支上工作。
 
-    ![](images/038.png)
+   ![](images/038.png)
 
-<a name="Ex5Task2"></a>
-### Task 2: Working with branches ###
+<a name="Ex5Task2"> </a>
+###任务2：使用分支机构###
 
-Git keeps track of which branch you are working on and makes sure that when you checkout a branch your files match the most recent commit on the branch. Branches let you work with multiple versions of the source code in the same local Git repository at the same time. You can use Visual Studio Code to publish, check out and delete branches.
+Git跟踪正在处理的分支，并确保在签出分支时文件与该分支上的最新提交相匹配。分支使您可以同时使用同一本地Git存储库中的多个版本的源代码。您可以使用Visual Studio Code来发布，签出和删除分支。
 
-1. Click the **Publish changes** button next to the branch.
+1.单击分支旁边的**Publish changes**按钮。
 
-    ![](images/039.png)
+   ![](images/039.png)
 
-1. From the Azure DevOps browser tab, select **Branches**.
+1.在“ Azure DevOps”浏览器选项卡中，选择**Branches**。
 
-    ![](images/040.png)
+   ![](images/040.png)
 
-1. You should see the newly pushed **dev** branch. Click on more actions drop down and Select the **Delete branch** button to delete it. Confirm the delete.
+1.您应该看到新推送的**dev**分支。单击更多操作下拉菜单，然后选择**Delete branch**按钮将其删除。确认删除。
 
-    ![](images/041_new.png)
+   ![](images/041_new.png)
 
-1. Return to **Visual Studio Code**.
+1.返回到 **Visual Studio Code**。
 
-1. Click the **dev** branch.
+1.单击**dev**分支。
 
-    ![](images/042.png)
+   ![](images/042.png)
 
-1. Note that there are two **dev** branches listed. The local (**dev**) branch is there because it's not deleted when the server branch is deleted. The server (**origin/dev**) is there because it hasn't been pruned. Select the **master** branch to check it out.
+1.请注意，列出了两个**dev**分支。本地（**dev**）分支在那里，因为在删除服务器分支时不会将其删除。服务器 (**origin/dev**)在那里，因为它尚未被修剪。选择**master**分支以将其签出。
 
-    ![](images/043.png)
+   ![](images/043.png)
 
-1. Press **Ctrl+Shift+P** to open the **Command Palette**.
+1.按**Ctrl+Shift+P**打开**Command Palette**。
 
-1. Start typing **"Git: Delete"** and select **Git: Delete Branch** when it becomes visible.
+1.开始输入**Git: Delete**，然后在可见时选择**Git: Delete Branch**。
 
-    ![](images/044.png)
+   ![](images/044.png)
 
-1. There is only one local branch to delete, so select it.
+1.只有一个本地分支要删除，因此选择它。
 
-    ![](images/045.png)
+   ![](images/045.png)
 
-1. Click the **master** branch.
+1.单击**master**分支。
 
-    ![](images/046.png)
+   ![](images/046.png)
 
-1. Note that the local **dev** branch is gone, but the remote **origin/dev** is still showing.
+1.请注意，本地**dev**分支已消失，但远程**origin/dev**仍在显示。
 
-    ![](images/047.png)
+   ![](images/047.png)
 
-1. Press **Ctrl+Shift+P** to open the **Command Palette**.
+1.按**Ctrl+Shift+P**打开**Command Palette**。
 
-1. Start typing **"Git: Fetch"** and select **Git: Fetch (Prune)** when it becomes visible. This command will update the origin branches in the local snapshot and delete those that are no longer there.
+1.开始输入**Git: Fetch**，然后在可见时选择**Git：Fetch（Prune）**。此命令将更新本地快照中的原始分支，并删除不再存在的原始分支。
 
-    ![](images/048.png)
+   ![](images/048.png)
 
-1. You can check in on exactly what these tasks are doing by selecting the **Output** window at the bottom of the screen.
+1.您可以通过选择屏幕底部的**Output**窗口来准确检查这些任务在做什么。
 
-    ![](images/049.png)
+   ![](images/049.png)
 
-1. Note that if you don't see the Git logs in the output console, you may need to select **Git** as the source.
+1.请注意，如果在输出控制台中看不到Git日志，则可能需要选择**Git**作为源。
 
-    ![](images/050.png)
+   ![](images/050.png)
 
-1. Click the **master** branch.
+1.单击**master**分支。
 
-    ![](images/051.png)
+   ![](images/051.png)
 
-1. The **origin/dev** branch should no longer be in the list.
+1.**origin/dev**分支不应再出现在列表中。
 
-    ![](images/052.png)
+   ![](images/052.png)
 
-<a name="Exercise6"></a>
-## Exercise 6: Managing branches from Azure DevOps ##
+<a name="Exercise6"> </a>
+##练习6：从Azure DevOps管理分支##
 
-In addition to all the functionality available in Visual Studio Code, you can also manage your repo branches from the Azure DevOps portal.
+除了Visual Studio Code中可用的所有功能之外，您还可以从Azure DevOps门户管理回购分支。
 
-<a name="Ex6Task1"></a>
-### Task 1: Creating a new branch ###
+<a name="Ex6Task1"> </a>
+###任务1：创建一个新分支###
 
-1. Switch to the Azure DevOps browser tab.
+1.切换到Azure DevOps浏览器选项卡。
 
-1. Navigate to **Repos \| Branches**. Click **New branch**.
+1.导航到**Repos \| Branches**。点击**New branch**。
 
-    ![](images/053_new.png)
+   ![](images/053_new.png)
 
-1. Enter a name of **"release"** for the new branch. Use the **Work items to link** dropdown to select one or more work items to link to this new branch. Click **Create branch** to create it.
+1.为新分支输入名称 **"release"**。使用**Work items to link** 下拉菜单选择一个或多个工作项目以链接到该新分支。点击**创建分支**以创建它。
 
-    ![](images/054_new.png)
+   ![](images/054_new.png)
 
-1. After the branch has been created, it will be available in the list.
+1.创建分支后，该分支将在列表中可用。
 
-    ![](images/055.png)
+   ![](images/055.png)
 
-1. Return to **Visual Studio Code**.
+1.返回到 **Visual Studio Code**。
 
-1. Press **Ctrl+Shift+P** to open the **Command Palette**.
+1.按**Ctrl+Shift+P**打开**Command Palette**。
 
-1. Start typing **"Git: Fetch"** and select **Git: Fetch** when it becomes visible. This command will update the origin branches in the local snapshot.
+1.开始输入**Git: Fetch**，然后在可见时选择**Git：Fetch**。此命令将更新本地快照中的原始分支。
 
-    ![](images/056.png)
+   ![](images/056.png)
 
-1. Click the **master** branch.
+1.单击**master**分支。
 
-    ![](images/057.png)
+   ![](images/057.png)
 
-1. Select **origin/release**. This will create a new local branch called **"release"** and check it out.
+1.选择**origin/release**。这将创建一个新的本地分支，称为**release**并将其签出。
 
-    ![](images/058.png)
+   ![](images/058.png)
 
-<a name="Ex6Task2"></a>
-### Task 2: Deleting a branch ###
+<a name="Ex6Task2"> </a>
+###任务2：删除分支###
 
-1. Return to Azure DevOps and click the **Delete branch** from the more actions drop down to delete it.
+1.返回到Azure DevOps，然后从更多操作下拉列表中单击 **Delete branch**以将其删除。
 
-    ![](images/059_new.png)
+   ![](images/059_new.png)
 
-1. You can **Restore branch** if you want by searching for an exact branch name. Select **Restore branch** as shown below.
+1.如果需要，可以通过搜索确切的分支名称来 **Restore branch**。选择**Restore branch**，如下所示。
 
-    ![](images/060_new.png)
+   ![](images/060_new.png)
 
-<a name="Ex6Task3"></a>
-### Task 3: Locking a branch ###
+<a name="Ex6Task3"> </a>
+### 任务3：锁定分支 ###
 
-Locking is ideal for preventing new changes that might conflict with an important merge or to place a branch into a read-only state. Alternatively, you can use branch policies and pull requests instead of locking if you just want to ensure that changes in a branch are reviewed before they are merged.
+对于防止可能与重要合并冲突的新更改或将分支置于只读状态，锁定是理想的选择。另外，如果您只是想确保在合并分支之前对其进行更改，则可以使用分支策略和拉取请求而不是锁定请求。
 
-Locking does not prevent cloning of a repo or fetching updates made in the branch into your local repo. If you lock a branch, share with your team the reason why and make sure they know what to do to work with the branch after it is unlocked.
+锁定不会阻止克隆存储库或将分支中所做的更新提取到本地存储库中。如果您锁定分支，请与您的团队分享原因，并确保他们知道解锁分支后如何使用分支。
 
-1. From the **master** context menu, select **Lock**.
+1.从**master**上下文菜单中，选择**Lock**。
 
-    ![](images/061.png)
+   ![](images/061.png)
 
-1. The branch is now locked.
+1.分支现已锁定。
 
-    ![](images/062.png)
+   ![](images/062.png)
 
-1. Now **Unlock** the branch using the same process.
+1.现在，使用相同的流程来 **Unlock** 分支。
 
-    ![](images/063.png)
+   ![](images/063.png)
 
-<a name="Ex6Task4"></a>
-### Task 4: Tagging a release ###
+<a name="Ex6Task4"> </a>
+###任务4：标记发行版###
 
-1. While it may not seem like much, the product team has decided that this version of the site is exactly what's needed for v1.1. In order to mark it as such, navigate to the **Tags** tab.
+1.尽管看起来似乎不多，但是产品团队已决定该网站的版本正是v1.1所需要的。为了将其标记为此类，请导航至 **Tags** 标签。
 
-    ![](images/064.png)
+   ![](images/064.png)
 
-1. Click **Create Tag**.
+1.点击**Create Tag**。
 
-    ![](images/065.png)
+   ![](images/065.png)
 
-1. Enter a **name** of **"v1.1"** and a **Description** of **"Great release!"**. Click **Create**.
+1.**name**里输入**v1.1** ，**Description**里输入**Great release!**。点击**创建**。
 
-    ![](images/066.png)
+   ![](images/066.png)
 
-1. You have now tagged the project at this release. You could tag commits for a variety of reasons and Azure DevOps offers the flexibility to edit and delete them, as well as manage their permissions.
+1.现在，您已经在此版本中标记了该项目。您可以出于多种原因标记提交，Azure DevOps提供了编辑和删除它们以及管理其权限的灵活性。
 
-     <a name="![](images/067.png)"></a>
-     ## ![](images/067.png) ##
+     <a name="![](images/067.png)"> </a>
+     ##![](images/067.png)##
 
-<a name="Exercise7"></a>
-## Exercise 7: Managing repositories ##
+<a name="Exercise7"> </a>
+##练习7：管理存储库##
 
-You can create Git repos in team projects to manage your project's source code. Each Git repo has its own set of permissions and branches to isolate itself from other work in your project.
+您可以在team project中创建Git仓库，以管理项目的源代码。每个Git存储库都有其自己的权限集和分支，以使其自身与项目中的其他工作隔离。
 
-<a name="Ex7Task1"></a>
-### Task 1: Creating a new repo from Azure DevOps ###
+<a name="Ex7Task1"> </a>
+###任务1：从Azure DevOps创建新的存储库###
 
-1. From the project **Add** dropdown, select **New repository**.
+1.从项目的**Add**下拉列表中，选择**New repository**。
 
-    ![](images/068.png)
+   ![](images/068.png)
 
-1. Set the **Repository name** to **"New Repo"**.  Note that you also have the option to create a file named **README.md**. This would be the default markdown file that is rendered when someone navigates to the repo root in a browser. Additionally, you can preconfigure the repo with a **.gitignore** file. This file specifies which files, based on naming pattern and/or path, to ignore from source control. There are multiple templates available that include the common patterns and paths to ignore based on the project type you are creating. Click **Create**.
+1.将**Repository name**设置为**New Repo"**。请注意，您还可以选择创建一个名为**README.md**的文件。这将是当有人在浏览器中导航到存储库根目录时呈现的默认markdown文件。此外，您可以使用**。**.gitignore**文件预先配置存储库。该文件基于命名模式和/或路径指定从源代码管理中忽略哪些文件。有多个模板可用，其中包括基于要创建的项目类型而忽略的常见模式和路径。点击**Create**。
 
-    ![](images/069.png)
+   ![](images/069.png)
 
-1. That's it. Your repo is ready. You can now clone it with Visual Studio or your tools of choice.
+1.就是这样。您的仓库已准备就绪。现在，您可以使用Visual Studio或您选择的工具克隆它。
 
-    ![](images/070.png)
+   ![](images/070.png)
 
-<a name="Ex7Task2"></a>
-### Task 2: Deleting and renaming Git repos ###
+<a name="Ex7Task2"> </a>
+###任务2：删除并重命名Git仓库###
 
-1. Sometimes you'll have a need to rename or delete a repo, which is just as easy. Open **Project settings**.
+1.有时您需要重命名或删除存储库，这很容易。打开**Project settings**。
 
-    ![](images/ps.png)
+   ![](images/ps.png)
 
-1. Select **Repositories** under **Repos**.
+1.在**Repos**下选择**Repositories**。
 
 
-    ![](images/settings-repos.png)
+   ![](images/settings-repos.png)
 
 
-1. From the **New Repo** context menu, select **Delete repository**. Alternatively, you could rename it here.
+1.从**New Repo**上下文菜单中，选择**Delete repository**。或者，您可以在此处重命名。
 
-    ![](images/repo-delete.png)
+   ![](images/repo-delete.png)
 
-1. Enter the name **"New Repo"** to confirm the repo and click **Delete**.
+1.输入名称**New Repo**确认仓库，然后单击**Delete**。
 
-    ![](images/deleterepowindow.png)
-
+   ![](images/deleterepowindow.png)

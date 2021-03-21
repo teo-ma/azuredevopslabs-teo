@@ -1,581 +1,572 @@
 ---
-title: Agile Planning and Portfolio Management with Azure Boards
+title: 使用Azure Boards进行敏捷规划和项目组合管理
 layout: page
 sidebar: vsts
 permalink: /labs/azuredevops/agile/
 folder: /labs/azuredevops/agile/
 version: Lab version - 1.37.1
-updated: Last updated - 10/11/2020
+updated: Last updated - 3/18/2021
 redirect_from: "/labs/vsts/agile/index.htm"
 ---
 <div class="rw-ui-container"></div>
 <a name="Overview"></a>
 
-## Overview ##
 
-In this lab, you will learn about the agile planning and portfolio management tools and processes provided by Azure Boards and how they can help you quickly plan, manage, and track work across your entire team. You will explore the product backlog, sprint backlog, and task boards which can be used to track the flow of work during the course of an iteration. We will also take a look at how the tools have been enhanced in this release to scale for larger teams and organizations.
 
-<div class="bg-slap"><img src="./images/mslearn.png" class="img-icon-cloud" alt="MS teams" style="
-    width: 48px; height: 48px;">Want additional learning? Check out the  <a href="https://docs.microsoft.com/en-us/learn/modules/choose-an-agile-approach/" target="_blank"><b><u> Agile approach to software development </u></b></a> module on Microsoft Learn.</div>
+# 使用Azure Boards进行敏捷规划和项目组合管理
 
-<a name="Prerequisites"></a>
-### Prerequisites ###
+> 更多Lab可以参考 https://aka.ms/devopslabs
 
-- This lab requires you to complete task 1 from the <a href="../prereq/">prerequisite</a> instructions. (No cloning needed for this lab, skip Task 2)
+*    
+[主页](https://azuredevopslabs.com//default.html)/使用Azure Boards进行敏捷规划和项目组合管理
 
-<a name="Exercise1"></a>
-## Exercise 1: Agile Project Management ##
+在本实验中，您将学习AzureBoards提供的敏捷计划和项目组合管理工具和流程，以及它们如何帮助您快速规划，管理和跟踪整个team的工作。您将探索产品backlog，sprintbacklog和任务板，它们可用于跟踪Iterations过程中的工作流程。我们还将研究此版本中工具的增强功能，以适应更大的team和组织。
 
-<a name="Ex1Task1"></a>
-### Task 1: Working with teams, areas, and iterations ###
+![MSteam](images/mslearn.png)是否需要其他学习？在Microsoft Learn上查看[**针对软件开发**](https://docs.microsoft.com/en-us/learn/modules/choose-an-agile-approach/)的 [**敏捷方法**](https://docs.microsoft.com/en-us/learn/modules/choose-an-agile-approach/)模块。
 
-1. Navigate to your Parts Unlimited project on Azure DevOps. It will be something like [https://dev.azure.com/YOURACCOUNT/Parts%20Unlimited](https://dev.azure.com/YOURACCOUNT/Parts Unlimited).
+*   本实验要求您先完成<a href="../prereq/">先决条件</a>说明中任务1 。（此练习无需克隆，请跳过先决条件中的任务2）
+  
 
-1. Open the settings page using the **Project settings** navigation located at the bottom left of the page.
+### 任务1：创建及使用teams, areas, and iterations
 
+1.  导航到Azure DevOps上的Parts Unlimited项目。它将类似于[https://dev.azure.com/YOURACCOUNT/Parts%20Unlimited](https://dev.azure.com/YOURACCOUNT/Parts%20Unlimited)。
+    
+2.  使用页面左下方的**Project settings**导航打开设置页面。
+    
     ![](images/settings.png)
-
-1. Select the **Teams** tab. There are already a few teams in this project, but you'll make a new one for this lab. Click **New team**.
-
+    
+3.  选择**Teams**选项卡。此项目中已经有几个team，但是您将为此实验创建一个新的team。点击**New team**。
+    
     ![](images/001.png)
-
-1. Use **"PUL-Web"** as the **Team name** and click **Create team** (Leave defaults).
-
+    
+4.  使用 **“ PUL-Web”**作为 **Team name**，然后单击**Create team** （保留默认值）。
+    
     ![](images/002.png)
-
-1. Select the newly created team to view its details.
-
+    
+5.  选择新创建的team以查看其详细信息。
+    
     ![](images/003.png)
-
-1. By default, the new team has only you as its member. You can use this view to manage membership, notifications, dashboards, and more. But first you will want to define the schedule and scope of the team. Click **Iterations and Area Paths**.
-
+    
+6.  默认情况下，新team只有您一个成员。您可以使用此视图来管理成员资格，通知，仪表板等。但是首先，您将需要定义team的日程安排和范围。单击**Iterations and area Paths**。
+    
     ![](images/004.png)
-
-1. Select the **Iterations** tab and click **Select iterations**. This team will use the same iteration schedule that's already in place for the other teams, although you can take a different route if that's better for your organization.
-
+    
+7.  选择**Iterations**选项卡，然后单**Select Iteration**。该team将使用与其他team相同的Iterations计划，但是如果这对您的组织更好，您可以采用其他方法。
+    
     ![](images/iteration.png)
-
-1. Select **Parts Unlimited\Sprint 1** and click **Save and close**. Note that this first sprint has already passed. This is because the demo data generator is designed to build out project history so that this sprint occurs in the past.
-
+    
+8.  选择**Parts Unlimited\Sprint 1**，然后单击**Save and close**。请注意，第一个sprint已经通过。这是因为演示数据生成器旨在构建项目历史记录，以使该sprint发生在过去。
+    
     ![](images/006.png)
-
-1. Repeat the process to add **Sprint 2** and **Sprint 3** (add them as in previous step). The second sprint is our current iteration, and the third is in the near future.
-
+    
+9.  重复此过程以添加**Sprint 2**和**Sprint 3**（如上一步所述添加它们）。第二个sprint是我们当前的Iterations，第三个sprint是在不久的将来。
+    
     ![](images/007.png)
 
-1. Select the **Areas** tab. By default, there is an area matching the name of the team.
-
-    ![](images/008.png)
-
-1. From the area dropdown, select **Include sub areas**. The default setting for all teams is to exclude sub-area paths. We will change it to include sub-areas so that the team gets visibility into all of the work items from all teams. Optionally, the management team could also choose to not include sub-areas, thereby removing work items from their view as soon as they are assigned to one of the teams.
-
-    ![](images/009.png)
-
+    
+10.  选择**Areas**选项卡。默认情况下，存在与team名称匹配的Area。
+    
+   ![](images/008.png)
+    
+11.  从area下拉列表中，选择**Include sub areas**。所有team的默认设置是排除sub areas路径。我们将对其进行更改以包括sub areas，以便team可以看到所有team的所有work items。可选地，管理team还可以选择不包括子area，从而在将work items目分配给team之一后立即将其从其视图中删除。
+    
+   ![](images/009.png)
+    
 <a name="Ex1Task2"></a>
-### Task 2: Working with work items ###
+### Task 2: 创建及使用work items-work items ###
 
-Work items play a prominent role in Azure DevOps. Whether describing work to be done, impediments to release, test definitions, or other key items, work items are the workhorse of modern projects. In this task you'll focus on using various work items to set up the plan to extend the Parts Unlimited site with a product training section. While it can be daunting to build out such a substantial part of a company's offering, Azure DevOps and the Scrum process make it very manageable.
+work items在Azure DevOps中扮演着重要角色。无论是描述要完成的工作，发布的障碍，测试定义还是其他关键项，work items都是现代项目的主力军。在此任务中，您将集中于使用各种work items来设置计划，以扩展带有产品培训部分的Parts Unlimited网站。虽然要扩大公司产品的如此重要的部分可能会令人生畏，但Azure DevOps和Scrum流程使其非常易于管理。
 
 ![](images/010.png)
 
-This task is designed to illustrate a variety of ways you can create different kinds of work items, as well as to demonstrate the breadth of features available on the platform. As a result, these steps should not be viewed as prescriptive guidance for project management. The features are intended to be flexible enough to fit your process needs, so explore and experiment as you go.
+该任务旨在说明您可以使用多种方式创建不同类型的work items，并演示平台上可用功能的广泛性。因此，这些步骤不应被视为项目管理的规定性指导。这些功能旨在具有足够的灵活性以适合您的过程需求，因此您可以随时进行探索和试验。
 
-1. Navigate to **Overview \| Dashboards**.
-
+1.  导航到**Overview \| Dashboards**。
+    
     ![](images/011.png)
-
-1. Select the **Overview** dashboard for **Parts Unlimited Team**.
-
+    
+2.  选择**Parts Unlimited Team**的 **Overview** 仪表板。
+    
     ![](images/012.png)
-
-1. There are many ways to create work items in Azure DevOps, and we'll explore a few of them. Sometimes it's as simple as firing one off from a dashboard. In the **New Work Item** form, type **"Product training"** and select the **Epic** type. Click **Create**.
-
-    ![](images/new-wit.png)
-    ![](images/013.png)
-
-1. Assign the new work item to yourself and set the **Area** to **Parts Unlimited\PUL-Web**. Set the **Iteration** to **Parts Unlimited\Sprint 2** and click **Save & Close**. Ordinarily you would want to fill out as much information as possible, but you can run lean here for the purposes of this lab.
-
+    
+3.  在Azure DevOps中创建work items的方法有很多，我们将探讨其中的一些方法，在Dashboards的右下角可以发现**New Work Item** 表单，键入**"Product training"**，**然后选择**Epic**类型。点击**Create**。
+    
+    ![](images/new-wit.png) ![](images/013.png)
+    
+4.  将新work items分配给您自己，然后将**Areas**设置为**Parts Unlimited \\ PUL-Web**。将“**Iterations”**设置为**Parts Unlimited\Sprint 2** ，然后单击**Save & Close**。通常，您希望填写尽可能多的信息，但是出于本实验的目的，您可以在此处精益求精。
+    
     ![](images/014.png)
-
-1. Navigate to **Boards \| Work Items**.
-
+    
+5.  导航到**Boards \| Work Items**。
+    
     ![](images/015.png)
-
-1. Locate the newly created epic for **Product training** and open it.
-
+    
+6.  找到为**Product training**新创建的epic，然后将其打开。
+    
     ![](images/016.png)
-
-1. The work item form includes everything you could ever want to know about a work item. This includes details about who it's assigned to, its status across many parameters, and all the associated information and history for how it has been handled since creation. One of the key areas to focus on is the **Related Work**. One of the ways to add a feature to this epic is to select **Add link \| New item**.
-
+    
+7.  work items表单包含您可能想要了解的有关work items的所有信息。这包括有关分配给谁的详细信息，其在许多参数中的状态以及自创建以来如何处理的所有相关信息和历史记录。**Related Work**是重点关注的领域之一。向此epic中添加功能的方法之一是选择**Add link \| New item**。
+    
     ![](images/017.png)
-
-1. Set the **Work item type** to **Feature** and set the **Title** to **"Training dashboard"**. Click **OK**.
-
+    
+8.  将**work items类型**设置为**Feature**，并将**Title** 设置为**Training dashboard**。单击**OK**。
+    
     ![](images/018.png)
-
-1. That **Assignment**, **Area**, and **Iteration** should already set to the same as the epic, and it's even linked to the parent item it was created from. Click **Save & Close**.
-
+    
+9.  该**Assignment**，**Area**和**Iteration**应该已经设置为与epic相同，甚至被链接到创建它的父项。点击**保存并关闭**。
+    
     ![](images/019.png)
+    
+10.  导航到 **Boards**视图。
+    
+   ![](images/020.png)
+    
+11.  选择**PUL-Web Boards**。这将为该特定team打开Boards。
+    
+   ![](images/021.png)
+    
+12.  将板子从显示**Backlog**切换为显示**Features**。这将很容易的添加Task和其他work items到Features。
+    
+   ![](images/022.png)
+    
+13.  从**Training dashboard**下拉列表中，选择**Add Product Backlog Item** 。
+    
+   ![](images/023.png)
+    
+14.  将第一个backlog项目命名为**As a customer, I want to view new tutorials**，然后按**Enter键**保存。这将创建一个新的**Product Backlog Item**（PBI）work items，该work items是功能的子项，并共享其area和Iterations。
+    
+   ![](images/024.png)
+    
+15.  添加另外两个PBI，这些PBI旨在使客户能够查看他们最近查看的教程并请求新的教程。
+    
+   ![](images/025.png)
+    
+16.  将任务板视图切换回**Backlog items**。
+    
+   ![](images/026.png)
+    
+17.  待办事项的状态定义了它们相对于完成的位置。尽管您可以使用该表单打开和编辑work items，但将卡拖到板上更容易。将第一个work items拖到**Approved**。
+    
+   ![](images/027.png)
+    
+18.  您还可以展开work items卡，以方便地进行可编辑的详细信息。
+    
+   ![](images/028.png)
+    
+19.  将移动的PBI分配给您自己。
+    
+   ![](images/029.png)
+    
+20.  将第二个work items目拖到**Committed**阶段。
+    
+   ![](images/030.png)
+    
+21.  将最终的PBI拖到**Done**阶段。
+    
+   ![](images/031.png)
+    
+22.  任务板(task board)是backlog的一个视图。通过单击**View as Backlog** 来查看表格形式。
+    
+   ![](images/032.png)
+    
+23.  单击**Expand**按钮，它使您可以查看这些work items下的嵌套任务。创建work items的另一种简单方法是使用待办事项列表上的**Add**按钮。单击它可将新任务添加到第一个backlog项目。
+    
+   ![](images/033.png)
+    
+24.  将**Title**设置为**Add page for most recent tutorials**。将**Remaining Work**设置为**5**，将**Activity**为**Development**。点击**Save & Close**。
+    
+   ![](images/034.png)
+    
+25.  向**Optimize data query for most recent tutorials**中添加另一个任务。将其**Remaining Work**设置为**3**，将其**Activity**为**Design**。点击**Save & Close**。
+    
+   ![](images/035.png)
+    
 
-1. Navigate to the **Boards** view.
+### 任务3：管理sprint和容量
 
-    ![](images/020.png)
+您的team通常在sprint的第一天举行的sprint计划会议期间建立sprintbacklog。每个sprint对应一个有时间限制的间隔，该间隔支持您的team使用敏捷流程和工具进行工作的能力。在计划会议期间，您的产品负责人与您的team一起确定那些故事或待办事项以在sprint中完成。
 
-1. Select **PUL-Web Boards**. This will open the board for that particular team.
+计划会议通常包括两个部分。在第一部分中，team和产品所有者根据以前的sprint经验，确定team认为可以在sprint中完成的backlog项目。这些项目将添加到sprint待办事项列表中。在第二部分中，您的team确定如何开发和测试每个项目。然后，他们定义并估计完成每个项目所需的任务。最后，您的team承诺根据这些估计来实施部分或全部项目。
 
-    ![](images/021.png)
-
-1. Switch the board from showing **Backlog items** to showing **Features**. This will make it easy to add tasks and other work items to the features.
-
-    ![](images/022.png)
-
-1. From the **Training dashboard** dropdown, select **Add Product Backlog Item**.
-
-    ![](images/023.png)
-
-1. Name the first backlog item **"As a customer, I want to view new tutorials"** and press **Enter** to save. This creates a new **Product Backlog Item** (PBI) work item that is a child of the feature and shares its area and iteration.
-
-    ![](images/024.png)
-
-1. Add two more PBIs designed to enable the customer to see their recently viewed tutorials and to request new tutorials.
-
-    ![](images/025.png)
-
-1. Switch the task board view back to **Backlog items**.
-
-    ![](images/026.png)
-
-1. Backlog items have a state that defines where they are relative to being completed. While you could open and edit the work item using the form, it's easier to just drag cards on the board. Drag the first work item to **Approved**.
-
-    ![](images/027.png)
-
-1. You can also expand work item cards to get to conveniently editable details.
-
-    ![](images/028.png)
-
-1. Assign the moved PBI to yourself.
-
-    ![](images/029.png)
-
-1. Drag the second work item to the **Committed** stage.
-
-    ![](images/030.png)
-
-1. Drag the final PBI to the **Done** stage.
-
-    ![](images/031.png)
-
-1. The task board is one view into the backlog. View the tabular form by clicking **View as Backlog**.
-
-    ![](images/032.png)
-
-1. Click the **Expand** button, which allows you to view nested tasks under these work items. Another easy way to create work items is using the **Add** button on the backlog. Click it to add a new task to the first backlog item.
-
-    ![](images/033.png)
-
-1. Set the **Title** to **"Add page for most recent tutorials"**. Set the **Remaining Work** to **"5"** and the **Activity** to **"Development"**. Click **Save & Close**.
-
-    ![](images/034.png)
-
-1. Add another task to **"Optimize data query for most recent tutorials"**. Set its **Remaining Work** to **"3"** and its **Activity** to **"Design"**. Click **Save & Close**.
-
-    ![](images/035.png)
-
-<a name="Ex1Task3"></a>
-### Task 3: Managing sprints and capacity ###
-
-Your team builds the sprint backlog during the sprint planning meeting, typically held on the first day of the sprint. Each sprint corresponds to a time-boxed interval which supports your team's ability to work using Agile processes and tools. During the planning meeting, your product owner works with your team to identify those stories or backlog items to complete in the sprint.
-
-Planning meetings typically consist of two parts. In the first part, the team and product owner identify the backlog items that the team feels it can commit to completing in the sprint, based on experience with previous sprints. These items get added to the sprint backlog. In the second part, your team determines how it will develop and test each item. They then define and estimate the tasks required to complete each item. Finally, your team commits to implementing some or all the items based on these estimates.
-
-1. Your sprint backlog should contain all the information your team needs to successfully plan and complete work within the time allotted without having to rush at the end. Before you start planning your sprint, you'll want to have created, prioritized, and estimated your backlog and defined your sprints. Navigate to the **Sprints** view using the navigation.
-
+1.  您的sprint待办事项应包含您的team在分配的时间内成功计划和完成工作所需的所有信息，而不必着急。在开始计划sprint之前，您将需要创建，确定优先级并估算backlog并定义sprint。使用导航导航到“ **Sprints”**视图。
+    
     ![](images/036.png)
-
-1. From the **View options** dropdown, select the **Work details** panel option.
-
+    
+2.  从**View options**下拉列表中，选择**Work details**面板选项。
+    
     ![](images/037.png)
-
-1. The current sprint has a pretty limited scope. There are two tasks in the **To do** stage that combine for 8 hours of estimated work. At this point, neither task has been assigned.
-
+    
+3.  当前的sprint范围非常有限。**To do**阶段有两个任务，需要进行8个小时的估计工作。此时，尚未分配任何任务。
+    
     ![](images/038.png)
-
-1. Assign the **Add page** task to yourself. Note that this updates the capacity view.
-
+    
+4.  将**Add page**任务分配给自己。请注意，这将更新容量视图。
+    
     ![](images/039.png)
-
-1. Select the **Capacity** tab. This view enables you to define what activities a user can take on and at what level of capacity. In this case, set your capacity to allow **"1"** hour of **Development** per day. Note that you can add additional activities per user in the case they do more than just development.
-
+    
+5.  选择**Capacity**选项卡。通过此视图，您可以定义用户可以执行的活动以及达到的容量级别。在这种情况下，将您的容量设置为每天允许**1**小时的**Development**。请注意，您可以为每个用户添加其他活动，以防他们做的事不只是开发。
+    
     ![](images/040.png)
-
-1. However, let's assume you're going to take some vacation. Click **0 days** under **Days off**.
-
+    
+6.  但是，假设您要去度假。点击**Days off**下的**0 days**。
+    
     ![](images/041.png)
-
-1. Set your vacation to span five work days during the current sprint (within the next few weeks). Click **OK**.
-
+    
+7.  将您的假期设置为在当前sprint期间（在接下来的几周内）跨越五个工作日。单击**OK**。
+    
     ![](images/042.png)
-
-1. Click **Save**.
-
+    
+8.  点击**Save**。
+    
     ![](images/043.png)
-
-1. Return to the **Taskboard**.
-
+    
+9.  返回**Taskboard**。
+    
     ![](images/044.png)
+    
+10.  请注意，容量视图（ capacity view）已更新以反映您的可用宽度。这个确切的数字可能会有所不同，但是对于此处的屏幕快照，sprint容量为11小时（11个工作日内每天1小时）。
+    
+   ![](images/045.png)
+    
+11.  评估板的一项便利功能是您可以轻松地在线更新关键数据。定期更**Remaining Work**估算值是一个好习惯，以反映每个任务的预期时间。假设您已经查看了**Add page**任务的工作，发现实际上所需的时间比最初预期的要长。将其设置为该sprint的总容量。
+    
+   ![](images/046.png)
+    
+12.  请注意，这是如何最大程度地扩展**Development**和您的个人能力的。由于它们足够大以覆盖分配的任务，因此它们保持绿色。但是，由于其他任务需要额外的3个小时，因此超出了**Teams**的整体能力。
+    
+   ![](images/047.png)
+    
+13.  解决此容量问题的一种方法是将任务移至将来的Iterations。有几种方法可以完成此操作。首先，您可以在此处打开任务并在对话框中对其进行编辑。另一方面，**Backlog**视图提供了一个**嵌入式**菜单选项来移动它。现在不要移动它。
+    
+   ![](images/048.png)
+    
+14.  返回到**Taskboard**视图。
+    
+   ![](images/049.png)
+    
+15.  从**View options**下拉菜单中选择**People**。
+    
+   ![](images/050.png)
+    
+16.  这将调整您的视图，以便您可以按人（而不是按backlog项目）查看任务的进度。
+    
+   ![](images/051.png)
+    
+17.  还有很多可用的自定义。单击**Configure team settings**按钮。
+    
+   ![](images/052.png)
+    
+18.  在**Styles**选项卡上，单击**Add Styling rule**，然后将**Name**设置为**Development**。选择绿色**Card color**。如果符合以下规则标准，这会将所有卡涂成绿色。
+    
+   ![](images/053.png)
+    
+19.  为**Activity = Development**添加规则。这会将分配给**Development**activit的所有卡设置为绿色。
+    
+   ![](images/054.png)
+    
+20.  **Backlogs**选项卡允许您设置可用于导航的级别。默认情况下不包含epic，但您可以在此处进行更改。
+    
+   ![](images/055.png)
+    
+21.  您还可以指定team遵循的**Working days**。这适用于capacity和burndown计算。
+    
+   ![](images/056.png)
+    
+22.  **Working with bugs**选项卡允许您指定错误在板上的呈现方式。
+    
+   ![](images/057.png)
+    
+23.  单击**Save and close**以保存样式规则。
+    
+   ![](images/058.png)
+    
+24.  与**Development**相关的任务现在是绿色的，非常容易识别。
+    
+   ![](images/059.png)
+### 任务4：客户化看板（Kanban boards）
 
-1. Note that the capacity view has been updated to reflect your available bandwidth. This exact number may vary, but for the screenshots here, that sprint capacity is 11 hours (1 hour per day over 11 working days).
-
-    ![](images/045.png)
-
-1. One convenient feature of the boards is that you can easily update key data in-line. It's a good practice to regularly update the **Remaining Work** estimate to reflect the amount of time expected for each task. Let's say you've reviewed the work for the **Add page** task and found that it will actually take longer than originally expected. Set it to whatever your total capacity is for this sprint.
-
-    ![](images/046.png)
-
-1. Note how this expands the **Development** and your personal capacities to their maximum. Since they're large enough to cover the assigned tasks, they stay green. However, the overall **Team** capacity is exceeded due to the additional 3 hours required by the other task.
-
-    ![](images/047.png)
-
-1. One way to resolve this capacity issue would be to move the task to a future iteration. There are a few ways this could be done. First, you could open the task here and edit it in the dialog. The **Backlog** view, on the other hand, provides an in-line menu option to move it. Don't move it now.
-
-    ![](images/048.png)
-
-1. Return to the **Taskboard** view.
-
-    ![](images/049.png)
-
-1. Select **People** from the **View options** dropdown.
-
-    ![](images/050.png)
-
-1. This adjusts your view such that you can review the progress of tasks by person instead of by backlog item.
-
-    ![](images/051.png)
-
-1. There is also a lot of customization available. Click the **Configure team settings** button.
-
-    ![](images/052.png)
-
-1. On the **Styles** tab, click **Add Styling rule** and set the **Name** to **"Development"**. Choose a green **Card color**. This will color all cards green if they meet the rule criteria set below.
-
-    ![](images/053.png)
-
-1. Add a rule for **Activity = Development**. This will set all cards assigned to **Development** activities green.
-
-    ![](images/054.png)
-
-1. The **Backlogs** tab allows you to set the levels available for navigation. Epics are not included by default, but you could change that here.
-
-    ![](images/055.png)
-
-1. You can also specify the **Working days** the team follows. This applies to capacity and burndown calculations.
-
-    ![](images/056.png)
-
-1. The **Working with bugs** tab allows you to specify how bugs are presented on the board.
-
-    ![](images/057.png)
-
-1. Click **Save and close** to save the styling rule.
-
-    ![](images/058.png)
-
-1. The task associated with **Development** is now green and very easy to identify.
-
-    ![](images/059.png)
-
-<a name="Ex1Task4"></a>
-### Task 4: Customizing Kanban boards ###
-
-To maximize a team's ability to consistently deliver high quality software, Kanban emphasize two main practices. The first, visualize the flow of work, requires you to map your team's workflow stages and configure your Kanban board to match. The second, constrain the amount of work in progress, requires you to set work-in-progress (WIP) limits. You're then ready to track progress on your Kanban board and monitor key metrics to reduce lead or cycle time. Your Kanban board turns your backlog into an interactive signboard, providing a visual flow of work. As work progresses from idea to completion, you update the items on the board. Each column represents a work stage, and each card represents a user story (blue cards) or a bug (red cards) at that stage of work. However, every team develops its own process over time, so the ability to customize the Kanban board to match the way your team works is crucial.
-
-1. Navigate to **Boards**.
-
+为了最大限度地提高团队持续交付高质量软件的能力，看板强调了两个主要实践。首先，可视化工作流程，要求您映射团队的工作流阶段，并配置看板以匹配。第二，约束在制品的数量，要求您设置在制品（WIP）限制。然后，您就可以在看板上跟踪进度，并监控关键指标，以减少提前期或周期时间。看板将您的backlog变成一个交互式的招牌，提供一个可视化的工作流程。随着工作从构思到完成的进行，你会更新黑板上的项目。每一列代表一个工作阶段，每一张卡片代表一个用户故事（蓝卡）或一个bug（红卡）。但是，每个团队都会随着时间的推移开发自己的流程，因此定制Kanban Board以匹配团队工作方式的能力至关重要。
+1.  导航到**Boards**。
+    
     ![](images/060.png)
-
-1. Click the **Configure team settings** button.
-
+    
+2.  单击**Configure team settings**按钮。
+    
     ![](images/061.png)
-
-1. The team is emphasizing work done with data, so there is special attention paid to any task associated with accessing or storing data. Select the **Tag colors** tab. Click **Add tag color** enter a tag of **"data"**. Whenever a backlog item or bug is tagged with **data**, that tag will be highlighted.
-
+    
+3.  team正在强调处理数据的工作，因此，与访问或存储数据相关的任何任务都应特别注意。选择**Tag colors**标签。点击**Add tag color**输入标签**data**。每当backlog的项目或错误用**data**标记时，该标记将突出显示。
+    
     ![](images/062.png)
-
-1. You can also specify which **Annotations** you would like included on cards to make them easier to read and navigate. When an annotation is enabled, the child work items of that type are easily accessible by clicking the visualization on each card.
-
+    
+4.  您还可以指定要在卡片上包含的**Annotations**，以使其更易于阅读和浏览。启用注释后，可以通过单击每个卡上的可视化文件轻松访问该类型的子work items。
+    
     ![](images/063.png)
-
-1. The **Tests** tab enables you to configure how tests appear and behave on the cards.
-
+    
+5.  **Tests**选项卡使您可以配置测试在卡上的显示方式和行为。
+    
     ![](images/064.png)
-
-1. Click **Save and close**.
-
+    
+6.  单击**Save and close**。
+    
     ![](images/065.png)
-
-1. Open the **view new tutorials** backlog item.
-
+    
+7.  打开**view new tutorials**backlog项。
+    
     ![](images/066.png)
-
-1. Add tags for **"data"** and **"ux"**. Click **Save & Close**.
-
+    
+8.  为**data**和**ux**添加标签。点击**Save & Close**。
+    
     ![](images/067.png)
-
-1. Note that the two tags are now visible on the card, although the **data** tag is highlighted yellow as configured.
-
+    
+9.  请注意，这两个标签现在在卡上可见，尽管**数据**标签在配置时突出显示为黄色。
+    
     ![](images/068.png)
+    
+10.  单击**Configure team settings**按钮。
+    
+   ![](images/069.png)
+    
+11.  选择**Columns**选项卡。本部分允许您向工作流程添加新的阶段。单击**Add Column**然后将**Name**设置为**QA Approved**。将在*WIP limit**设置为**1**，这表示在此阶段一次只能有一个work items目。通常，您可以将其设置得更高一些，但是这里只有两个work items来演示该功能。移动舞台，使其发生在**Committed**和**Done**之间。
+    
+   ![](images/070.png)
+    
+12.  单击**Save and close**。
+    
+   ![](images/071.png)
+    
+13.  现在，您将在工作流程中看到新的阶段。
+    
+   ![](images/072.png)
+    
+14.  将work items从**Committed**和**Done**移到**QA Approved**。
+    
+   ![](images/073.png)
+    
+15.  现在，该载物台超出了其在**WIP**限制，并以红色显示为警告。
+    
+   ![](images/074.png)
+    
+16.  将**recently viewed**backlog项目移回**Committed**。
+    
+   ![](images/075.png)
+    
+17.  单击**Configure team settings**按钮。
+    
+   ![](images/076.png)
+    
+18.  返回到**Columns**选项卡，然后选择**QA Approved**。在将工作移入列与开始工作之间通常存在滞后。为了克服这种滞后并显示实际的工作状态，您可以打开拆分列。拆分时，每列包含两个子列：**Doing**和**Done**。拆分列使您的team可以实现拉模型。如果没有拆分列，team将向前推进工作，以表明他们已经完成了工作阶段。但是，将其推进到下一个阶段并不一定意味着team成员立即开始对该项目进行工作。选中将**Split column into doing and done**来为此创建两个单独的列。
+    
+   ![](images/077.png)
+    
+19.  当您的team更新从一个阶段到下一个阶段的工作状态时，这有助于他们就**完成（Done）**达成共识。通过为每个看板列指定**Definition of done**，可以帮助您共享将项目移至下游阶段之前需要完成的基本任务。添加使用markdown**完成**的**定义**，例如**Passes all tests**。单击**Save and close**。
+    
+   ![](images/078.png)
+    
+20.  请注意**QA Approved**阶段现在具有**Doing**和**Done**列。
+    
+   ![](images/079.png)
+    
+21.  您也可以单击列标题旁边的图标以阅读**Definition of done**。
+    
+   ![](images/080.png)
+    
+22.  单击**Configure team settings**按钮。
+    
+   ![](images/081.png)
+    
+23.  您的看板板支持您可视化从新到完成的工作流程的能力。添加**swimlanes**，还可以可视化支持不同服务级别类的工作状态。您可以创建泳道来表示支持您的跟踪需求的任何其他维度。在“**泳道”**选项卡上，单击**添加Swimlane**然后**Name**设置为**Expedite**。单击**Save and close**。
+    
+   ![](images/082.png)
+    
+24.  将**Committed**work items拖放**QA Approved | Doing** , 这样做是为了在QA带宽(bandwidth)可用时将其识别为优先级。
+    
+   ![](images/083.png)
+    
+25.  如果您想查看具有更多work items目的更复杂的电路板，请从team下拉列表中选择**Parts Unlimited Team**。
+    
+   ![](images/084.png)
+    
+26.  该板为您提供了一个试验和查看结果的场所。
+    
+   ![](images/085.png)
+    
 
-1. Click the **Configure team settings** button.
 
-    ![](images/069.png)
-
-1. Select the **Columns** tab. This section allows you to add new stages to the workflow. Click **Add Column** and set the **Name** to **"QA Approved"**. Set the **WIP limit** to **"1"**, which indicates that only one work item should be in this stage at a time. You would ordinarily set this higher, but there are only two work items to demonstrate the feature with here. Move the stage to occur between **Committed** and **Done**.
-
-    ![](images/070.png)
-
-1. Click **Save and close**.
-
-    ![](images/071.png)
-
-1. You will now see the new stage in the workflow.
-
-    ![](images/072.png)
-
-1. Move the work items from **Committed** and **Done** into **QA Approved**.
-
-    ![](images/073.png)
-
-1. The stage now exceeds its **WIP** limit and is colored red as a warning.
-
-    ![](images/074.png)
-
-1. Move the **recently viewed** backlog item back to **Committed**.
-
-    ![](images/075.png)
-
-1. Click the **Configure team settings** button.
-
-    ![](images/076.png)
-
-1. Return to the **Columns** tab and select **QA Approved**. A lag often exists between when work gets moved into a column and when work starts. To counter that lag and reveal the actual state of work in progress, you can turn on split columns. When split, each column contains two sub-columns: **Doing** and **Done**. Split columns let your team implement a pull model. Without split columns, teams push work forward, to signal that they've completed their stage of work. However, pushing it to the next stage doesn't necessarily mean that a team member immediately starts work on that item. Check **Split column into doing and done** to create two separate columns for this.
-
-    ![](images/077.png)
-
-1. As your team updates the status of work as it progresses from one stage to the next, it helps that they agree on what **done** means. By specifying the **Definition of done** criteria for each Kanban column, you help share the essential tasks to complete before moving an item into a downstream stage. Add a **Definition of done** using markdown, such as **"Passes \*\*all\*\* tests."**. Click **Save and close**.
-
-    ![](images/078.png)
-
-1. Note that the **QA Approved** stage now has **Doing** and **Done** columns.
-
-    ![](images/079.png)
-
-1. You can also click the icon next to the column header to read the **Definition of done**.
-
-    ![](images/080.png)
-
-1. Click the **Configure team settings** button.
-
-    ![](images/081.png)
-
-1. Your Kanban board supports your ability to visualize the flow of work as it moves from new to done. When you add **swimlanes**, you can also visualize the status of work that supports different service-level classes. You can create a swimlane to represent any other dimension that supports your tracking needs. From the **Swimlanes** tab, click **Add Swimlane** and set the **Name** to **"Expedite"**. Click **Save and close**.
-
-    ![](images/082.png)
-
-1. Drag and drop the **Committed** work item onto **QA Approved \| Doing** so that it gets recognized as having priority when QA bandwidth becomes available.
-
-    ![](images/083.png)
-
-1. If you would like to review a more sophisticated board with many more work items, select the **Parts Unlimited Team** from the team dropdown.
-
-    ![](images/084.png)
-
-1. This board provides a playground for you to experiment with and review the results.
-
-    ![](images/085.png)
-
-<a name="Ex1Task5"></a>
-### Task 5: Defining dashboards ###
-
-1. Select **Overview \| Dashboards**.
-
+### 任务5: 定义Dashboards
+1.  选择**Overview | Dashboards**。
+    
     ![](images/086.png)
-
-1. From the dashboard dropdown, select **Parts Unlimited Team Overview**. Dashboards allow teams to visualize status and monitor progress across the project. At a glance, you can make informed decisions without having to drill down into other parts of your team project site. The Overview page provides access to a default team dashboard which you can customize by adding, removing, or rearranging the tiles. Each tile corresponds to a widget that provides access to one or more features or functions.
-
+    
+2.  从仪表板下拉菜单中，选择**Parts Unlimited Team Overview**。仪表板使team可以可视化状态并监视整个项目的进度。一目了然，您可以做出明智的决定，而不必深入到team项目站点的其他部分。“概述”页面提供对默认team仪表板的访问，您可以通过添加，删除或重新排列磁贴来对其进行自定义。每个图块都对应一个小部件，该小部件可提供对一个或多个特征或功能的访问。
+    
     ![](images/087.png)
-
-1. From the dashboard dropdown, select **New dashboard**.
-
+    
+3.  在信息中心下拉菜单中，选择**New dashboard**。
+    
     ![](images/088.png)
-
-1. Set the **Name** to **"Product training"** and select the **PUL-Web** team. Click **Create**.
-
+    
+4.  将**Nmae**设置为**Product training**，然后选择**PUL-Web**team。点击**Create**。
+    
     ![](images/089.png)
-
-1. Click **Add a widget**.
-
+    
+5.  单击**Add a widget**。
+    
     ![](images/090.png)
-
-1. In the **Add Widget** panel, search for **"sprint"** to find existing widgets that focus on sprints. Select **Sprint Overview** and click **Add**.
-
+    
+6.  在**Add Widget**面板中，搜索**sprint**以查找专注于**sprint的**现有小部件。选择**Sprint Overview**，然后单击**Add**。
+    
     ![](images/091.png)
-
-1. Many widgets have options you can configure. Click the **Settings** button.
-
+    
+7.  许多小部件都有您可以配置的选项。单击**Settings**按钮。
+    
     ![](images/092.png)
-
-1. The quantity and depth of settings will vary by widget. Click **Close** to dismiss.
-
+    
+8.  设置的数量和深度将因小部件而异。单击**Close**以关闭。
+    
     ![](images/093.png)
-
-1. Search the widgets again for **"sprint"** and add the **Sprint Capacity** widget.
-
+    
+9.  再次在小部件中搜索**sprint**然后添加** Sprint Capacity**小部件(widget)。
+    
     ![](images/094.png)
+    
+10.  单击**Done Editing**。
+    
+   ![](images/095.png)
+    
+11.  现在，您可以在自定义仪表板上查看当前sprint的两个重要方面。
+    
+   ![](images/096.png)
+    
+12.  自定义仪表板的另一种方法是基于work items查询生成图表，您可以将其共享到仪表板。选择**Boards | Queries**。
+    
+   ![](images/097.png)
+    
+13.  点击**New query**。
+    
+   ![](images/098.png)
+    
+14.  将第一项设置为**Work Item Type = Task**，将第二项设置为** Area Path = Parts Unlimited\PUL-Web**。
+    
+   ![](images/099.png)
+    
+15.  点击**Save query**。
+    
+   ![](images/100.png)
+    
+16.  将**Name**设置为**Web tasks**，将**Folder**设为**Shared Queries**。单击**OK**。
+    
+   ![](images/101.png)
+    
+17.  选择**Charts**选项卡，然后单击**New chart**。
+    
+   ![](images/102.png)
+    
+18.  点击**New chart**。
+    
+   ![](images/103.png)
+    
+19.  将图表的**Name**设置为**Web tasks - By assignment**，将**Group by**设置为**Assigned To**。单击**OK**保存。
+    
+   ![](images/104.png)
+    
+20.  您现在可以将此图表添加到仪表板。
+    
+   ![](images/105.png)
+    
+### 任务6: 客户化 team流程
+在Azure DevOps中，您可以通过过程自定义工作跟踪体验。流程定义了work items跟踪系统以及您通过Azure DevOps访问的其他子系统的构建块。每当您创建team项目时，都将选择包含项目所需构建基块的过程。
 
-1. Click **Done Editing**.
+Azure DevOps支持两种流程类型。首先，核心系统进程（Scrum，Agile和CMMI系统进程）被锁定。您无法自定义这些过程。第二种类型，即继承的过程，是从核心系统过程创建的。您可以自定义这些过程。
 
-    ![](images/095.png)
+此外，所有进程都是共享的。也就是说，一个或多个team项目可以引用一个流程。您可以自定义流程，而不是自定义单个team项目。对流程所做的更改会自动更新所有引用该流程的team项目。
 
-1. You can now review two important aspects of your current sprint on your custom dashboard.
+创建继承的流程后，您可以对其进行自定义，基于该流程创建team项目，并迁移现有的team项目以对其进行引用。在将Gitteam项目迁移到继承的流程之前，无法对其进行自定义。
 
-    ![](images/096.png)
+在此任务中，我们将创建一个继承自Scrum的新流程。我们将要做的一项更改是添加一个backlog项目字段，该字段旨在跟踪专有的PartsUnlimited票证ID。
 
-1. Another way of customizing dashboards is to generate charts based on work item queries, which you can share to a dashboard. Select **Boards \| Queries**.
-
-    ![](images/097.png)
-
-1. Click **New query**.
-
-    ![](images/098.png)
-
-1. Set the first term to **Work Item Type = Task** and the second term to **Area Path = Parts Unlimited\PUL-Web**.
-
-    ![](images/099.png)
-
-1. Click **Save query**.
-
-    ![](images/100.png)
-
-1. Set the **Name** to **"Web tasks"** and the **Folder** to **Shared Queries**. Click **OK**.
-
-    ![](images/101.png)
-
-1. Select the **Charts** tab and click **New chart**.
-
-    ![](images/102.png)
-
-1. Click **New chart**.
-
-    ![](images/103.png)
-
-1. Set the **Name** of the chart to **"Web tasks - By assignment"** and **Group by** to **Assigned To**. Click **OK** to save.
-
-    ![](images/104.png)
-
-1. You can now add this chart to a dashboard.
-
-    ![](images/105.png)
-
-<a name="Ex1Task6"></a>
-### Task 6: Customizing team process ###
-
-In Azure DevOps, you customize your work tracking experience through a process. A process defines the building blocks of the work item tracking system as well as other sub-systems you access through Azure DevOps. Whenever you create a team project, you select the process which contains the building blocks you want for your project.
-
-Azure DevOps supports two process types. The first, the core system processes-Scrum, Agile, and CMMI system processes-are locked. You cannot customize these processes. The second type, inherited processes, you create from a core system process. These processes you can customize.
-
-In addition, all processes are shared. That is, one or more team projects can reference a single process. Instead of customizing a single team project, you customize a process. Changes made to the process automatically update all team projects that reference that process.
-
-Once you've created an inherited process, you can customize it, create team projects based on it, and migrate existing team projects to reference it. The Git team project can't be customized until it's migrated to an inherited process.
-
-In this task we'll create a new process that inherits from Scrum. The one change we'll make is to add a backlog item field designed to track to a proprietary PartsUnlimited ticket ID.
-
-1. Click the **Azure DevOps** logo in the top left corner to navigate to the account root.
-
+1.  单击左上角的**Azure DevOps**徽标导航到帐户根目录。
+    
     ![](images/106.png)
-
-1. From the left bottom corner, click **Organization settings**.
-
+    
+2.  在左下角，点击**Organization settings**。
+    
     ![](images/107.png)
-
-1. Select the **Process** tab under **Boards**.
-
+    
+3.  选择**Boards**下的**Process**。
+    
     ![](images/process.png)
-
-1. From the **Scrum** dropdown, select **Create inherited process**.
-
+    
+4.  从**Scrum**下拉列表中，选择**Create inherited process**。
+    
     ![](images/109.png)
-
-1. Set the name of the inherited process to **Customized Scrum** and click **Create process**.
-
+    
+5.  将继承的进程的名称设置为**Customized Scrum**，然后单击**Create process**。
+    
     ![](images/110.png)
-
-1. Open **Customized Scrum**. You may need to refresh the browser for this to become visible.
-
+    
+6.  打开**Customized Scrum**。您可能需要刷新浏览器才能看到它。
+    
     ![](images/111.png)
-
-1. Select **Product Backlog Item**.
-
+    
+7.  选择**Product Backlog Item**。
+    
     ![](images/112.png)
-
-1. Click **New field**.
-
+    
+8.  单击**New field**。
+    
     ![](images/113.png)
-
-1. Set the **Name** of the new field to **"PUL Ticket ID"**.
-
+    
+9.  将字段的**Name**设置为**PUL Ticket ID**。
+    
     ![](images/114.png)
+    
+10.  在**Layout**选项卡上，将**Label**设置为**Ticket ID**。同时为**Create a new group** 创建一个新组**PartsUnlimited**，然后单击**Add field**。
+    
+   ![](images/115.png)
+    
+11.  现在已经配置了自定义过程，让我们切换Parts Unlimited项目以使用它。使用面包屑返回到**All processes**根目录。
+    
+   ![](images/116.png)
+    
+12.  我们的项目当前使用**Scrum**，因此请选择该过程。
+    
+   ![](images/117.png)
+    
+13.  切换到**Projects**选项卡。
+    
+   ![](images/118.png)
+    
+14.  从**Parts Unlimited**的上下文菜单中。选择**Change process**。
+    
+   ![](images/119.png)
+    
+15.  选择**Customized Scrum**过程，然后单击**Save**。
+    
+   ![](images/120.png)
+    
+16.  使用徽标链接返回到帐户信息中心。
+    
+   ![](images/121.png)
+    
+17.  打开**Parts Unlimited**门户。
+    
+   ![](images/122.png)
+    
+18.  选择**Boards | Work Items**。
+    
+   ![](images/123.png)
+    
+19.  打开第一个backlog项目。
+    
+   ![](images/124.png)
+    
+20.  现在，您将在流程定制过程中定义的**PartsUnlimited**组下看到**Ticket ID**字段。您可以像对待其他任何文本字段一样对待它。
+    
+   ![](images/125.png)
+    
+21.  保存work items后，Azure DevOps还将保存新的自定义信息，以便可用于查询以及其余的Azure DevOps。
+    
 
-1. On the **Layout** tab, set the **Label** to **"Ticket ID"**. Also **Create a new group** for **"PartsUnlimited"**. Click **Add field**.
+您可以观看以下视频，引导您完成本实验中介绍的所有步骤
+<iframe width="560" height="315" src="https://www.youtube.com/embed/WWUf5OWeBD0" frameborder="0" allowfullscreen="true"> </iframe>
 
-    ![](images/115.png)
-
-1. Now that the customized process has been configured, let's switch the Parts Unlimited project to use it. Return to the **All processes** root using the breadcrumb.
-
-    ![](images/116.png)
-
-1. Our project currently uses **Scrum**, so select that process.
-
-    ![](images/117.png)
-
-1. Switch to the **Projects** tab.
-
-    ![](images/118.png)
-
-1. From the context menu for **Parts Unlimited**. Select **Change process**.
-
-    ![](images/119.png)
-
-1. Select the **Customized Scrum** process and click **Save**.
-
-    ![](images/120.png)
-
-1. Return to the account dashboard using the logo link.
-
-    ![](images/121.png)
-
-1. Open the **Parts Unlimited** portal.
-
-    ![](images/122.png)
-
-1. Select **Boards \| Work Items**.
-
-    ![](images/123.png)
-
-1. Open the first backlog item.
-
-    ![](images/124.png)
-
-1. You will now see the **Ticket ID** field under the **PartsUnlimited** group defined during the process customization. You can treat this like any other text field.
-
-    ![](images/125.png)
-
-1. Once the work item is saved, Azure DevOps will also save the new custom information so that it will be available for queries and through the rest of Azure DevOps.
-
-
-## Reference
-
-Thanks to **Nagaraj Bhairaji** for making a video on this lab. You can watch the following video that walks you through all the steps explained in this lab
-
-<figure class="video_container">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/WWUf5OWeBD0" frameborder="0" allowfullscreen="true"> </iframe>
-</figure>

@@ -1,196 +1,197 @@
 ---
-title: Package Management with Azure Artifacts
+title: 使用Azure Artifacts进行程序包管理
 layout: page
 sidebar: vsts
 permalink: /labs/azuredevops/packagemanagement/
 folder: /labs/azuredevops/packagemanagement/
-version: Lab version - 1.38.0
+version: Lab version - 1. 38.0
 updated: Last updated - 05/11/2020
 redirect_from: "/labs/vsts/packagemanagement/index.htm"
 ---
 <div class="rw-ui-container"></div>
-<a name="Overview"></a>
+<a name="概述"></a>
 
-## Overview ##
 
-**Azure Artifacts** is an extension that makes it easy to discover, install, and publish NuGet, npm, and Maven packages in Azure DevOps. It's deeply integrated with other hubs like Build so that package management can become a seamless part of your existing workflows.
+## 概述 ##
+
+**Azure Artifacts**是一个扩展，可轻松发现，安装和发布Azure DevOps中的NuGet，npm和Maven程序包。它与Build等其他枢纽深度集成，因此包管理可以成为您现有工作流程的无缝组成部分。
 
 <div class="bg-slap"><img src="./images/mslearn.png" class="img-icon-cloud" alt="MS teams" style="
     width: 48px; height: 48px;">Want additional learning? Check out the <a href="https://docs.microsoft.com/en-us/learn/modules/manage-build-dependencies/" target="_blank"><b><u> Manage build dependencies with Azure Artifacts </u></b></a> module on Microsoft Learn.</div>
 
 <a name="Prerequisites"></a>
-### Prerequisites ###
+### 先决条件 ###
 
-- Visual Studio 2017 or later
+-Visual Studio 2017或更高版本
 
-- This lab requires you to complete tasks 1 and 2 from the <a href="../prereq/">prerequisite</a>  instructions
+-本实验要求您按照 <a href="../prereq/">先决条件</a>指令完成任务1和2。
 
-<a name="Exercise1"></a>
-## Exercise 1: Working with Azure Artifacts ##
+<a name="Exercise1"> </a>
+## 练习1：使用Azure Artifacts ##
 
-**Azure Artifacts** is an extension to Azure DevOps Services and Azure DevOps Server.  It comes pre-installed in Azure DevOps Services, Azure DevOps Server 2019, Team Foundation Server (TFS) 2017 and 2018.
+**Azure Artifacts**是Azure DevOps Services和Azure DevOps Server的扩展。它已预安装在Azure DevOps Services，Azure DevOps Server 2019，Team Foundation Server（TFS）2017和2018中。
 
-<a name="Ex1Task1"></a>
-### Task 1: Creating and connecting to a feed ###
+<a name="Ex1Task1"> </a>
+### 任务1：创建并连接到Feed ###
 
-1. Navigate to the **Artifacts** hub.
+1. 导航到 **Artifacts** 中心(hub)。
 
-    ![](images/000.png)
+   ![](images/000.png)
+   
+1. 点击 **Create feed**。该供稿将是可供组织内用户使用的NuGet软件包的集合，并且将与公共NuGet供稿一起作为对等源。本实验中的场景将重点放在使用Azure Artifacts的工作流上，因此实际的体系结构和开发决策仅是说明性的。
 
-1. Click **Create feed**. This feed will be a collection of NuGet packages available to users within the organization and will sit alongside the public NuGet feed as a peer. The scenario in this lab will focus on the workflow for using Azure Artifacts, so the actual architectural and development decisions are purely illustrative.
+   ![](images/createfeed.png)
 
-    ![](images/createfeed.png)
+1. 此提要将包含可以在该组织中的各个项目之间共享的通用功能。选择此实验室的范围作为 **Organization** 。将名称设置为 **"PartsUnlimitedShared"** ，然后单击 **Create**。保留默认选项。
 
-1. This feed will include common functionality that can be shared across projects in this organization. Select the scope as **Organization** for this lab. Set the name to **"PartsUnlimitedShared"** and click **Create**. Leave the default options.
+   ![](images/create-feed-window2.png)
 
-    ![](images/create-feed-window2.png) 
+1. 任何想要连接到此NuGet feed的用户都必须配置其环境。点击**Connect to feed**。
 
-1. Any user who wants to connect to this NuGet feed must configure their environment. Click **Connect to feed**.
-
-    ![](images/003.png)
+   ![](images/003.png)
 
     
 
-1. In the **Connect to feed** window, select **Visual Studio** and copy the **Source** url . This is the only thing Visual Studio and NuGet need to start taking advantage of the new feed. Leave the dialog open in the browser.
+1. 在 **Connect to feed** 窗口中，选择 **Visual Studio** 并复制 **Source** URL。这是Visual Studio和NuGet唯一需要开始利用新的提要的东西。在浏览器中将对话框保持打开状态。
 
-   ![](images/connect-feed.png)
+  ![](images/connect-feed.png)
 
-1. Launch a **new** instance of **Visual Studio**. Do not use the instance open from cloning the primary **Parts Unlimited** solution.
+1. 启动 **Visual Studio**的 **new** 实例。请勿使用通过克隆主要的 **Parts Unlimited** 解决方案而打开的实例。
 
-1. Select **Tools \| NuGet Package Manager \| Package Manager Settings**.
+1. 选择 **Tools \| NuGet Package Manager \| Package Manager Settings**。
      
-     ![](images/packagemanagersettings.png)
-1. Locate the **Package Sources** section and click the **Add** button to add a new package source.
+    ![](images/packagemanagersettings.png)
+1. 找到 **Package Sources** 部分，然后单击 **Add** 按钮以添加新的软件包来源。
 
-    ![](images/005.png)
+   ![](images/005.png)
 
-1. Set the **Name** to **"PartsUnlimitedShared"** and paste the **Source** URL copied earlier. Click **Update** followed by **OK**. Visual Studio is now connected to the new feed.
+1. 将e **Name** 设置为 **"PartsUnlimitedShared"** ，并粘贴先前复制的 **Source**  URL。单击 **Update** ，然后单击 **OK**。现在，Visual Studio已连接到新的提要。
 
-    ![](images/006.png)
+   ![](images/006.png)
 
-1. Close and Reopen the other Visual Studio instance used for cloning the PartsUnlimited repository ( <a href="../prereq/"> prerequisites </a> Task 2), so that it shows this new source.
+1. 关闭并重新打开用于克隆PartsUnlimited存储库的另一个Visual Studio实例（ <a href="../prereq/"> 先决条件 </a> 任务2），以便它显示此新源。
 
-<a name="Ex1Task2"></a>
-### Task 2: Creating and publishing a NuGet package ###
+<a name="Ex1Task2"> </a>
+###任务2：创建和发布NuGet包###
 
-1. From the main menu of **Visual Studio**, select **File \| New \| Project** ("Create a new project" in VS2019). We will now create a shared assembly that will be published as a NuGet package so that other teams can integrate it and stay up to date without having to work directly with the project source.
+1. 从 **Visual Studio**的主菜单中，选择 **File \| New \| Project** （VS2019中的“创建新项目”）。现在，我们将创建一个共享程序集，该程序集将以NuGet程序包的形式发布，以便其他团队可以集成该程序集并保持最新状态，而不必直接与项目源代码合作。
 
-1. From the **Visual C#** section, select the **Class Library (.NET Framework)** template and set the **Name** to **"PartsUnlimited.Shared"**. Click **OK** to create the project.
-(If VS2019 used, look for "class" in the finder and select **Class Library (.NET Framework)** and choose version 4.5.1)
+1. 在 **Visual C#** 部分中，选择 **Class Library (.NET Framework)** 模板，然后将 **Name** 设置为 **"PartsUnlimited.Shared"**。单击 **OK** 以创建项目。
+（如果使用VS2019，请在查找器中查找“类”，然后选择 **Class Library (.NET Framework)**并选择版本4.5.1）
 
-    **VS2017**
+    ** VS2017 **
 
-    ![](images/007.png)
+   ![](images/007.png)
 
-    **VS2019**
+    ** VS2019 **
 
-    ![](images/create-project-vs2019.png)
-    ![](images/conf-project-vs2019.png)
+   ![](images/create-project-vs2019.png)
+   ![](images/conf-project-vs2019.png)
 
-1. In **Solution Explorer**, delete **Class1.cs**.
+1. 在 **Solution Explorer**，删除 **Class1. cs**。
 
-    ![](images/008.png)
+   ![](images/008.png)
 
-1. Right-click the project node and select **Properties**.
+1. 右键单击项目节点，然后选择 **Properties**。
 
-    ![](images/009.png)
+   ![](images/009.png)
 
-1. Set the **Target framework** to **.NET Framework 4.5.1** and click **Yes** to confirm the change. (Confirm the same if you are using VS2019)
+1. 将 **Target framework** 设置为 **.NET Framework 4.5.1** ，然后单击k **Yes** 以确认更改。 （如果使用VS2019，请确认相同）
 
-    ![](images/010.png)
+   ![](images/010.png)
 
-1. Press **Ctrl+Shift+B** to build the project. In the next task we'll use **NuGet.exe** to generate a NuGet package directly from the built project, but it requires the project to be built first.
+1. 按 **Ctrl+Shift+B** 生成项目。在下一个任务中，我们将使用 **NuGet.exe** 直接从生成的项目中生成NuGet包，但是它要求首先构建项目。
 
-1. Return to the Azure DevOps browser tab. On the feed created before click **Connect to Feed** \| **NuGet.exe** \| **Get the tools**.
+1. 返回到Azure DevOps浏览器选项卡。在之前创建的提要上，单击 **Connect to Feed** \| **NuGet.exe** \| **Get the tools**
 
-    ![](images/getthetools.png)
+   ![](images/getthetools.png)
 
-1. Click on **Download the latest Nuget**
+1. 单击 **Download the latest Nuget**
 
-    ![](images/downloadthenuget.png)
+   ![](images/downloadthenuget.png)
 
-1. On the opened window, select nuget.exe version **v5.5.1**
+1. 在打开的窗口中，选择nuget.exe版本 **v5.5.1**
 
 
-1. Return to **Visual Studio**. From **Solution Explorer**, right-click the **PartsUnlimited.Shared** project node and select **Open Folder in File Explorer**.
+1. 返回 **Visual Studio**。在 **Solution Explorer**中，右键单击 **PartsUnlimited.Shared** 项目节点，然后选择 **Open Folder in File Explorer**。
 
-    ![](images/013.png)
+   ![](images/013.png)
 
-1. Move the downloaded **nuget.exe** file into the folder containing the **.csproj** file.
+1. 将下载的 **nuget.exe** 文件移动到包含 **.csproj** 文件的文件夹中。
 
-    ![](images/014.png)
+   ![](images/014.png)
 
-1. In the same **Windows Explorer** window, select **File \| Open Windows PowerShell \| Open Windows PowerShell as administrator**.
+1. 在同一 **Windows Explorer** 窗口中，选择**File \| Open Windows PowerShell \| Open Windows PowerShell as administrator** 。
 
-    ![](images/015.png)
+   ![](images/015.png)
 
-1. Execute the line below to create a **.nupkg** file from the project. Note that this is a quick shortcut to package the NuGet bits together for deployment. NuGet is very customizable and offers a lot of great flexibility for providing detailed information for consumers. You can learn more over on the [NuGet package creation page](https://docs.microsoft.com/en-us/nuget/create-packages/overview-and-workflowhttps:/docs.microsoft.com/en-us/nuget/create-packages/overview-and-workflow).
-
-    ```
-    ./nuget.exe pack ./PartsUnlimited.Shared.csproj
-    ```
-1. NuGet builds a minimal package based on the information it is able to pull from the project. For example, note that the name is **PartsUnlimited.Shared.1.0.0.nupkg**. That version number was pulled from the assembly.
-
-    ![](images/016.png)
-
-1. Return to **Visual Studio**. From **Solution Explorer**, open **Properties\AssemblyInfo.cs**.
-
-    ![](images/017.png)
-
-1. The **AssemblyVersion** attribute specifies the version number to build into the assembly. Each NuGet release requires a unique version number, so if we continue to use this method for creating packages, we will need to remember to increment this before building.
-
-    ![](images/018.png)
-
-1. Return to the **PowerShell** window and execute the following command (it should be on one line). Note that you need to provide an "API Key", which can be any non-empty string. We're using **"VSTS"** here. Log in using your Azure DevOps credentials when asked.
+1. 执行以下行，从项目中创建一个 **.nupkg** 文件。请注意，这是将NuGet位打包在一起以进行部署的快捷方式。 NuGet是非常可定制的，并为为消费者提供详细信息提供了极大的灵活性。您可以在[NuGet程序包创建页面]上了解更多信息。 / nuget / create-packages / overview-and-workflow）。
 
     ```
-    ./nuget.exe push -source "PartsUnlimitedShared" -ApiKey VSTS PartsUnlimited.Shared.1.0.0.nupkg
+    ./nuget.exe包./PartsUnlimited.Shared.csproj
     ```
-1. The command should succeed after a few seconds.
+1.  NuGet根据能够从项目中提取的信息构建一个最小的程序包。例如，请注意名称为 **PartsUnlimited.Shared.1. 0.0.nupkg** 。该版本号是从程序集中提取的。
 
-    ![](images/019.png)
+   ![](images/016.png)
 
-1. Return to the browser window open to Azure DevOps and **refresh** the window. You should now see the organization's NuGet package is published in the feed. Click it to view the details.
+1. 返回 **Visual Studio**。在 **Solution Explorer**中，打开 **Properties\AssemblyInfo.cs** 。
 
-    ![](images/020.png)
+   ![](images/017.png)
 
-1. The details have been imported and are now ready for others to consume.
+1.   **AssemblyVersion** 属性指定要构建到程序集中的版本号。每个NuGet发行版都需要一个唯一的版本号，因此，如果我们继续使用此方法来创建软件包，则需要记住在构建之前将其递增。
 
-    ![](images/021.png)
+   ![](images/018.png)
 
-<a name="Ex1Task3"></a>
-### Task 3: Importing a NuGet package ###
+1. 返回 **PowerShell** 窗口并执行以下命令（它应该在一行上）。请注意，您需要提供一个“ API密钥”，该密钥可以是任何非空字符串。我们在这里使用 **"VSTS"** 。询问时使用您的Azure DevOps凭据登录。
 
-1. Switch to the instance of **Visual Studio** that has the full **Parts Unlimited** solution open.
+    ```
+    ./nuget.exe push -source "PartsUnlimitedShared" -ApiKey VSTS PartsUnlimited.Shared.1. 0.0.nupkg
+    ```
+1. 该命令应在几秒钟后成功执行。
 
-1. In **Solution Explorer**, right-click the **References** node under the **PartsUnlimitedWebsite** project and select **Manage NuGet Packages**.
+   ![](images/019.png)
 
-    ![](images/022.png)
+1. 返回浏览器窗口，打开对Azure DevOps并 **refresh** 该窗口。现在，您应该看到该组织的NuGet包已在Feed中发布。单击它以查看详细信息。
 
-1. Click the **Browse** tab and change the **Package source** to **PartsUnlimitedShared**. The only package will be the one we just added, so click **Install** to add it to the project.
+   ![](images/020.png)
 
-    ![](images/023.png)
+1. 详细信息已导入，现在可供其他人使用。
 
-1. If asked, confirm the addition by clicking **OK**.
+   ![](images/021. png)
 
-    ![](images/024.png)
+<a name="Ex1Task3"> </a>
+###任务3：导入NuGet包###
 
-1. Press **Ctrl+Shift+B** to build the project. It should succeed. The NuGet package doesn't add any value yet, but at least we know it's there.
+1. 切换到 **Visual Studio** ，打开完整的 **Parts Unlimited** 实例。
+
+1. 在 **Solution Explorer** 中，右键单击 **PartsUnlimitedWebsite** 项目下的 **References** 节点，然后选择**Manage NuGet Packages** 。
+
+   ![](images/022.png)
+
+1. 单击 **Browse** 选项卡，然后将 **Package source** 更改为 **PartsUnlimitedShared**。唯一的软件包将是我们刚刚添加的软件包，因此请单击 **Install** 以将其添加到项目中。
+
+   ![](images/023.png)
+
+1. 如果询问，请单击 **OK**确认添加。
+
+   ![](images/024.png)
+
+1. 按 **Ctrl+Shift+B** 生成项目。它应该成功。 NuGet包尚未添加任何值，但至少我们知道它在那里。
 
 <a name="Ex1Task4"></a>
-### Task 4: Updating a NuGet package ###
+###任务4：更新NuGet软件包###
 
-1. Switch to the instance of **Visual Studio** that has the **PartsUnlimited.Shared** project open (the NuGet source project).
+1. 切换到 **Visual Studio** ，打开 **PartsUnlimited.Shared** 项目的（NuGet源项目）。
 
-1. In **Solution Explorer**, right-click the **PartsUnlimited.Shared** project node and select **Add \| New Item**.
+1. 在 **Solution Explorer**中，右键单击 **PartsUnlimited.Shared** 项目节点，然后选择 **Add \| New Item** 。
 
-    ![](images/025.png)
+   ![](images/025.png)
 
-1. Select the **Class** template and enter the **Name "TaxService.cs"**. Click **Add** to add the class. We can pretend that tax calculation will be consolidated into this shared class and managed centrally so that other teams can simply work with the NuGet package.
+1. 选择 **Class** 模板，然后输入 **Name "TaxService.cs"** 。点击 **Add** 以添加课程。我们可以假装将税收计算合并到此共享的类中并进行集中管理，以便其他团队可以简单地使用NuGet程序包。
 
-    ![](images/026.png)
+   ![](images/026.png)
 
-1. Replace the code in the new file with the code below. For now it will just hardcode a 10% rate.
+1. 用下面的代码替换新文件中的代码。目前，它将仅硬编码10％的比率。
 
     ```c#
     namespace PartsUnlimited.Shared
@@ -204,45 +205,44 @@ redirect_from: "/labs/vsts/packagemanagement/index.htm"
         }
     }
     ```
-1. Since we're updating the assembly (and package), return to **AssemblyInfo.cs** and update the **AssemblyVersion** to **1.1.0.0**.
+1. 由于我们正在更新程序集（和程序包），请返回 **AssemblyInfo.cs** 并将 **AssemblyVersion** 更新为 **1. 1. 0.0**。
 
-    ![](images/027.png)
+   ![](images/027.png)
 
-1. Press **Ctrl+Shift+B** to build the project.
+1. 按 **Ctrl+Shift+B** 生成项目。
 
-1. Return to the **PowerShell** window and execute the following line to repackage the NuGet package. Note that the new package will have the updated version number.
-
-    ```
-    ./nuget.exe pack PartsUnlimited.Shared.csproj
-    ```
-1. Execute the following line to publish the updated package. Note that the version number has changed to reflect the new package.
+1. 返回 **PowerShell** 窗口并执行以下行以重新打包NuGet程序包。请注意，新软件包将具有更新的版本号。
 
     ```
-    ./nuget.exe push -source "PartsUnlimitedShared" -ApiKey VSTS PartsUnlimited.Shared.1.1.0.nupkg
+    ./nuget.exe包PartsUnlimited.Shared.csproj
     ```
-1. Return to the browser window open to Azure DevOps and refresh the page. You will still be looking at the 1.0.0 version of the package, but you can change that by selecting the **Versions** tab and selecting **1.1.0**.
+1. 执行以下行以发布更新的软件包。请注意，版本号已更改以反映新的软件包。
 
-    ![](images/028.png)
+    ```
+    ./nuget.exe推送-source“ PartsUnlimitedShared” -ApiKey VSTS PartsUnlimited.Shared.1. 1. 0.nupkg
+    ```
+1. 返回浏览器窗口，打开对Azure DevOps的页面并刷新页面。您仍将查看该软件包的1. 0.0版本，但是可以通过选择**Versions** 标签并选择**1. 1. 0**来更改该版本。
 
-1. Switch back to the instance of **Visual Studio** open to the main **PartsUnlimited** project (with **PartsUnlimitedWebsite**).
+   ![](images/028.png)
 
-1. From **Solution Explorer**, open **PartsUnlimitedWebsite\Utils\DefaultShippingTaxCalculator.cs**.
+1. 切换回打开 **PartsUnlimited** 主项目（带有 **PartsUnlimitedWebsite**）的 **Visual Studio** 实例。
 
-    ![](images/029.png)
+1. 在 **Solution Explorer**中，打开 **PartsUnlimitedWebsite\Utils\DefaultShippingTaxCalculator.cs** 。
 
-1. Locate the call to **CalculateTax** around line **20** and add the qualifier **"PartsUnlimited.Shared.TaxService."** to the beginning. The original code called a method internal to this class, so the code we're adding to the beginning of the line is redirecting it to code from our NuGet assembly. However, since this project hasn't updated the NuGet package yet, it's still referencing 1.0.0.0 and doesn't have these new changes available, so the code will not build.
+   ![](images/029.png)
 
-    ![](images/030.png)
+1. 在**20**行附近找到 **CalculateTax** 的调用，并在它的开头添加qualifier  **"artsUnlimited.Shared.TaxService. "**。原始代码称为该类内部的方法，因此我们要添加到该行开头的代码将其重定向到NuGet程序集中的代码。但是，由于该项目尚未更新NuGet软件包，因此它仍引用1. 0.0.0，并且没有可用的这些新更改，因此将无法构建代码。
 
-1. In **Solution Explorer**, right-click the **References** node and select **Manage NuGet Packages**.
+   ![](images/030.png)
 
-    ![](images/031.png)
+1. 在 **Solution Explorer**中，右键单击 **References** 节点，然后选择 **Manage NuGet Packages**。
 
-1. NuGet is aware of our update, so click the **Updates** tab to view the details. Click **Update** to bring down the new version. If the **Updates** tab hasn't yet updated, you can still update the package from the **Browse** tab. Note that there may be many NuGet updates available, but you should only need to update **PartsUnlimited.Shared**. Note that it may take a little while for the package to become completely available for updating. If you get an error, wait a moment and try again.
+   ![](images/031. png)
 
-    ![](images/032.png)
+1.  NuGet知道我们的更新，因此请单击 **Updates** 选项卡以查看详细信息。单击 **Updates** 以放下新版本。如果  **Update** 选项卡尚未更新，您仍然可以从 **Browse** 选项卡更新软件包。请注意，可能有许多可用的NuGet更新，但是您只需要更新  **PartsUnlimited.Shared**。请注意，该软件包可能需要一些时间才能完全可用于更新。如果出现错误，请稍等片刻，然后重试。
 
-1. If asked, click **OK** to approve the update.
+   ![](images/032.png)
 
-1. Press **F5** to build and run the site. It should work as expected.
+1. 如果询问，请单击 **OK** 以批准更新。
 
+1. 按 **F5** 生成并运行该站点。它应该按预期工作。

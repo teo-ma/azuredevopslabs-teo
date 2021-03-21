@@ -1,164 +1,166 @@
 ---
-title: Exploratory Testing with Azure Test Plans
-layout: page
-sidebar: vsts
-permalink: /labs/azuredevops/exploratorytesting/
-folder: /labs/azuredevops/exploratorytesting/
-version: Lab version - 1.38.0
-updated: Last updated - 9/11/2019
-redirect_from: "/labs/vsts/exploratorytesting/index.htm"
+标题：使用Azure Test Plans测试计划进行探索性测试
+布局：页面
+侧边栏：vsts
+固定链接：/ labs / azuredevops / exploratorytesting /
+文件夹：/ labs / azuredevops / exploratorytesting /
+版本：实验室版本-1.38.0
+更新：最后更新-9/11/2019
+redirect_from：“ / labs / vsts / exploratorytesting / index.htm”
 ---
-<div class="rw-ui-container"></div>
-<a name="Overview"></a>
 
-## Overview ##
+# 使用Azure Test Plans测试计划进行探索性测试
+<div class =“ rw-ui-container”> </ div>
+<a name="概述"></a>
 
-In this lab, you will learn about the exploratory testing and feedback management capabilities provided in the Test & Feedback extension. You will learn about how exploratory testing (also called XT, or agile testing) has become a first-class experience in the toolset. This allows a tester to more flexibly test the underlying software without relying solely on formal test cases. You'll also learn about how you can manage the process of eliciting and managing the customer feedback lifecycle.
+## 概述 ＃＃
 
-<a name="Prerequisites"></a>
-### Prerequisites ###
+在本实验中，您将了解“测试与反馈”扩展中提供的探索性测试和反馈管理功能。您将了解探索性测试（也称为XT或敏捷测试）如何成为工具集中的一流体验。这使测试人员可以更灵活地测试基础软件，而不必完全依赖正式的测试用例。您还将了解如何管理引发和管理客户反馈生命周期的过程。
 
-- This lab requires you to complete tasks 1 and 2 from the <a href="../prereq/">prerequisite</a> instructions.
+<a name="先决条件"></a>
+### 先决条件###
 
-<a name="Exercise1"></a>
-## Exercise 1: Exploratory Testing ##
+-本实验要求您按照<a href="../prereq/">先决条件</a>指令完成任务1和2。
 
-<a name="Ex1Task1"></a>
-### Task 1: Installing the Chrome Extension ###
+<a name="Exercise1"> </a>
+## 练习1：探索性测试##
 
-1. Install **Google Chrome** from [http://google.com/chrome](http://google.com/chrome). The rest of this exercise will use Chrome as its browser. If you're already using Chrome, just open a new instance for the next set of steps.
+<a name="Ex1Task1"> </a>
+### 任务1：安装Chrome扩展程序###
 
-1. Navigate to the **Azure DevOps Marketplace** at [http://marketplace.visualstudio.com](http://marketplace.visualstudio.com/).
+1.从[http://google.com/chrome](http://google.com/chrome）安装** Google Chrome **。本练习的其余部分将使用Chrome作为其浏览器。如果您已经在使用Chrome，则只需为下一组步骤打开一个新实例即可。
 
-1. Select the **Azure DevOps** tab. Search for "**feedback**" and click the **Test & Feedback** extension.
+1.导航至[http://marketplace.visualstudio.com]（http://marketplace.visualstudio.com/）上的“ Azure DevOps市场”。
 
-    ![](images/000.png)
+1.选择“ Azure DevOps”选项卡。搜索“ ** feedback **”，然后单击“ Test＆Feedback **”扩展名。
 
-1. Click on **Install** button on the details page.
+ ![](images/000.png)
 
-    ![](images/001.png)
 
-1. Click **Install** for the Chrome extension.
+1.在详细信息页面上单击“安装”按钮。
 
-    ![](images/002.png)
+ ![](images/001.png)
 
-1. In the **Chrome Web Store**, click **Add to Chrome**.
+1.点击**安装**以安装Chrome扩展程序。
 
-    ![](images/003.png)
+ ![](images/002.png)
 
-1. Confirm the installation when asked.
+1.在“ Chrome网上应用店”中，单击“添加到Chrome”。
 
-    ![](images/004.png)
+ ![](images/003.png)
 
-1. To open the extension, click the extension icon that will appear on the right of the address bar. Select the **Connection Settings** tab. Enter the URL of your Azure DevOps instance, such as "**https://dev.azure.com/MYTEAM**", as the **Server URL** and click **Next**.
+1.询问时确认安装。
 
-    ![](images/005.png)
+ ![](images/004.png)
 
-1. The extension can be used in two modes: **Connected** and **Standalone** mode. If you have Azure DevOps or Azure DevOps Server, select Connected mode. Standalone mode is for users who don't have either and want to use the extension to file bugs and share the report with their team.
+1.要打开扩展名，请单击出现在地址栏右侧的扩展名图标。选择“连接设置”选项卡。输入您的Azure DevOps实例的URL，例如“ ** https：//dev.azure.com/MYTEAM**”作为“服务器URL”，然后单击“下一步”。
 
-1. After connecting to Azure DevOps, you will need to select the team you want these efforts associated with. Select the **Parts Unlimited Team** under the **Parts Unlimited** project and click **Save** to continue.
+ ![](images/005.png)
 
-    ![](images/006.png)
+1.该扩展名可以在两种模式下使用：**已连接**和**独立**模式。如果您具有Azure DevOps或Azure DevOps服务器，请选择“连接模式”。独立模式适用于既没有用户又不想使用扩展程序来提交错误并与团队共享报告的用户。
 
-<a name="Ex1Task2"></a>
-### Task 2: Exploratory Testing with the Chrome Extension ###
+1.连接到Azure DevOps之后，您将需要选择与这些工作相关联的团队。在“零件无限”项目下选择“零件无限团队”，然后单击“保存”以继续。
 
-1. In **Visual Studio**, press **F5** to build and run the **Parts Unlimited** project locally.
+ ![](images/006.png)
 
-1. To start an exploratory testing session, click the **Start session** button from the extension toolbar.
+<a name="Ex1Task2"> </a>
+### 任务2：使用Chrome扩展程序进行探索性测试###
 
-    ![](images/007.png)
+1.在** Visual Studio **中，按** F5 **本地构建并运行** Parts Unlimited **项目。
 
-1. Navigate to [http://localhost:5001](http://localhost:5001/).
+1.要启动探索性测试会话，请单击扩展工具栏上的“开始会话”按钮。
 
-1. In search box enter **"jumper lead"** and press **Enter**.
+ ![](images/007.png)
 
-    ![](images/008.png)
+1.导航到[http：// localhost：5001]（http：// localhost：5001 /）。
 
-1. You will see the search results as shown below.
+1.在搜索框中输入**“跳线” **并按** Enter **。
 
-    ![](images/009.png)
+ ![](images/008.png)
 
-1. Now in the search box enter **"jumper leads"** and press **Enter**.
+1.您将看到如下所示的搜索结果。
 
-    ![](images/010.png)
+ ![](images/009.png)
 
-1. You can see there are no search results. When you search for **jumper lead** it showed the results. But when you search for **jumper leads** it showed no results. This seems to be a bug.
+1.现在，在搜索框中输入**“跳线” **并按** Enter **。
 
-    ![](images/011.png)
+ ![](images/010.png)
 
-1. Click the **Exploratory Testing** icon button and select **Capture screenshot | Browser**.
+1.您可以看到没有搜索结果。当您搜索“跳线”时，它会显示结果。但是，当您搜索“跳线”时，它没有显示任何结果。这似乎是一个错误。
 
-    ![](images/012.png)
+ ![](images/011.png)
 
-1. Select a section of the screen and change the name of the screenshot to something more descriptive. Note that there are a variety of drawing tools available to really help you get your point across. Click the **Blur area** button.
+1.单击“探索性测试”图标按钮，然后选择“捕获屏幕快照”。浏览器**。
 
-    ![](images/013.png)
+ ![](images/012.png)
 
-1. Highlight a section of the screenshot, which will be blurred out to become illegible. This makes it easy to report bugs and create other work items without risking sensitive information. Click the **Save screenshot** button to add it to the current session's timeline.
+1.选择屏幕的一部分，然后将屏幕快照的名称更改为更具描述性的名称。请注意，有许多可用的绘图工具可以真正帮助您理解要点。点击“模糊区域”按钮。
 
-    ![](images/014.png)
+ ![](images/013.png)
 
-1. Click the **Add note** button to start a note. Type in something insightful and click **Save** to save the note to the session's timeline.
+1.突出显示屏幕截图的一部分，该部分将变得模糊不清，变得难以辨认。这使得报告错误和创建其他工作项变得容易，而不会冒敏感信息的风险。点击“保存屏幕截图”按钮，将其添加到当前会话的时间轴中。
 
-    ![](images/015.png)
+ ![](images/014.png)
 
-1. You can also record screen video to capture flaky issues like flickering, abnormal behavior of the web application etc. that are difficult to capture using screenshots alone. To record your screen click the **Record screen** button and click **Start recording**.
+1.单击**添加注释**按钮开始注释。输入具有洞察力的内容，然后单击“保存”以将注释保存到会话的时间轴中。
 
-    ![](images/016.png)
+ ![](images/015.png)
 
-1. Select the appropriate screen you want to record from the **Application Window** tab. In this case, select the 404 page and click **Share**. The recording for the screen selected has started.
+1.您还可以录制屏幕视频以捕获不稳定的问题，例如闪烁，Web应用程序的异常行为等，这些问题很难单独使用屏幕快照捕获。要录制屏幕，请点击“录制屏幕”按钮，然后点击“开始录制”。
 
-    ![](images/017.png)
+ ![](images/016.png)
 
-1. Search for **"jumper lead"** and show the results. Then search for **"jumper leads"** and show the lack of results.
+1.从“应用程序窗口”选项卡中选择要记录的适当屏幕。在这种情况下，请选择404页面，然后点击“共享”。所选屏幕的录制已开始。
 
-    ![](images/018.png)
+ ![](images/017.png)
 
-1. Click the **Stop recording** button on the extension to stop recording the screen. The screen recording gets saved.
+1.搜索**“跳线” **并显示结果。然后搜索“跳线” **，并显示结果不足。
 
-    ![](images/019.png)
+ ![](images/018.png)
 
-1. Click on the **View session timeline** button. You can see that all the content - screenshots, notes and videos you've captured are available in the current session's timeline. You can open the screenshots, read your notes or play the video from here.
+1.单击扩展名上的**停止录制**按钮以停止录制屏幕。屏幕录像被保存。
 
-    ![](images/020.png)
+ ![](images/019.png)
 
-<a name="Ex1Task3"></a>
-### Task 3: Creating Bugs with the Chrome Extension ###
+1.单击“查看会话时间轴”按钮。您可以看到所有内容-您捕获的屏幕截图，注释和视频都可以在当前会话的时间轴中找到。您可以从此处打开屏幕截图，阅读笔记或播放视频。
 
-1. Click the **Create bug** icon button followed by the expanded **Create bug** text button.
+ ![](images/020.png)
 
-    ![](images/021.png)
+<a name="Ex1Task3"> </a>
+### 任务3：使用Chrome扩展程序创建错误###
 
-1. Enter **"Search for jumper leads fails"** as the name of the bug. All the screenshots and videos captured earlier are already a part of the bug. In addition to this the image action log (user actions) has also been inserted for you so that it's easy for others to easily reproduce the issue. Click **Save** to save the bug to Azure DevOps.
+1.单击“创建错误”图标按钮，然后单击展开的“创建错误”文本按钮。
 
-    ![](images/022.png)
+ ![](images/021.png)
 
-1. Another great feature of this extension is its ability to view similar bugs and thus reduce redundant issues. Let's say you were another tester who happened to find this same bug and weren't aware that it was already logged. Click the **Create bug** icon button followed by the expended **Create bug** text button again to start a new bug form.
+1.输入**“搜索跳线失败” **作为错误的名称。先前捕获的所有屏幕截图和视频已经是该错误的一部分。除此之外，还为您插入了图像操作日志（用户操作），以便其他人可以轻松地重现该问题。单击“保存”，将错误保存到Azure DevOps。
 
-    ![](images/023.png)
+ ![](images/022.png)
 
-1. As you type the title **"jumper leads**" for the bug you will notice that the extension has detected that there is already another bug in the backlog with a similar title. Click **1 similar** to view the similar bug.
+1.此扩展的另一个重要功能是它能够查看类似的错误，从而减少冗余问题。假设您是另一位测试人员，恰巧发现了这个错误，却不知道它已被记录。再次单击“创建错误”图标按钮，然后再单击扩展的“创建错误”文本按钮，以启动新的错误表单。
 
-    ![](images/024.png)
+ ![](images/023.png)
 
-1. This bug appears to be the same as the one we were about to file, so select it and click **Edit** to edit the existing bug rather than to file a new bug.
+1.在为错误键入标题**“ jumper Leads **”时，您会注意到扩展名已检测到积压工作中已经存在另一个标题相似的错误。单击** 1类似**以查看类似的错误。
 
-    ![](images/025.png)
+ ![](images/024.png)
 
-1. At this time the current repro steps are added to the image action log. In practice, you would now review the existing repro steps to determine if you located this bug using a different method, in which case you would update the contents to indicate that your method is an alternative repro. Click **Save** to save the bug.
+1.此错误似乎与我们将要提交的错误相同，因此，请选择它并单击“编辑”以编辑现有错误，而不是提交新的错误。
 
-    ![](images/026.png)
+ ![](images/025.png)
 
-1. Click the **View session timeline** icon button and click the last created **Bug** link to open it.
+1.此时，当前的复制步骤已添加到图像操作日志中。实际上，您现在将查看现有的repro步骤，以确定是否使用其他方法找到了此错误，在这种情况下，您将更新内容以指示您的方法是替代的repro。单击“保存”以保存错误。
 
-    ![](images/027.png)
+ ![](images/026.png)
 
-1. Now back on the Azure DevOps site, you can update the bug as needed, such as by assigning it to someone or adjusting the severity.
+1.单击“查看会话时间轴”图标按钮，然后单击最后创建的“错误”链接以将其打开。
 
-    ![](images/028.png)
+ ![](images/027.png)
 
-1. In Chrome, end the testing session by clicking the **Stop Session** button.
+1.现在回到Azure DevOps站点，您可以根据需要更新错误，例如，将错误分配给某人或调整严重性。
 
-    ![](images/029.png)
+ ![](images/028.png)
 
+1.在Chrome浏览器中，通过单击“停止会话”按钮结束测试会话。
+
+ ![](images/029.png)

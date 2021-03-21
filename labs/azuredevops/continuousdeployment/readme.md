@@ -1,473 +1,472 @@
 ---
-title: Embracing Continuous Delivery with Azure Pipelines
-layout: page
-sidebar: vsts
-permalink: /labs/azuredevops/continuousdeployment/
-folder: /labs/azuredevops/continuousdeployment/
-version: Lab version - 1.38.0
-updated: Last updated - 10/11/2020
-redirect_from: "/labs/vsts/continuousdeployment/index.htm"
+标题：通过Azure Pipelines拥抱持续交付
+布局：页面
+侧边栏：vsts
+固定链接：/ labs / azuredevops / continuousdeployment /
+文件夹：/ labs / azuredevops / continuousdeployment /
+版本：实验室版本-1.38.0
+已更新：最近更新-2020年10月11日
+redirect_from：“ / labs / vsts / continuousdeployment / index.htm”
 ---
-<div class="rw-ui-container"></div>
-<a name="Overview"></a>
+<div class =“ rw-ui-container”> </ div>
+<aname="概述"></a>
 
-## Overview ##
+＃＃ 概述 ＃＃
 
-In this lab, you will learn about the release management features available in Azure Pipelines that automate the deployment of applications. These features help development and operations teams integrate with Azure DevOps Server to configure and automate complex deployments of their automated builds to target stages more easily. Development teams can also model their release processes and track approvals, sign-offs, and visualize their release status.
-
-
-<div class="bg-slap"><img src="./images/mslearn.png" class="img-icon-cloud" alt="MS teams" style="width: 48px; height: 48px;">Want additional learning? Check out the <a href="https://docs.microsoft.com/en-us/learn/modules/create-release-pipeline/" target="_blank"><b><u> Create a release pipeline in Azure Pipelines </u></b></a> module on Microsoft Learn.</div>
+在本实验中，您将了解Azure Pipelines中可用的版本管理功能，这些功能可自动部署应用程序。这些功能可帮助开发和运营团队与Azure DevOps Server集成，以配置和自动化其自动生成的复杂部署，从而更轻松地定位到目标阶段。开发团队还可以对发布流程进行建模，并跟踪批准，签署和可视化发布状态。
 
 
-<a name="Prerequisites"></a>
-### Prerequisites ###
+<div class =“ bg-slap”> <img src =“ ./ images / mslearn.png” class =“ img-icon-cloud” alt =“ MS小组” style =“宽度：48px；高度：48px;” >是否需要其他学习？在<a href="https://docs.microsoft.com/zh-cn/learn/modules/create-release-pipeline/" target="_blank"> <b> <u>中创建发布管道Microsoft Learn上的Azure Pipelines </ u> </ b> </a>模块。</ div>
 
-- An Azure account (free from [https://azure.com/free](https://azure.com/free)).
 
-- Complete task 1 from the <a href="../prereq/">prerequisite</a>  instructions.
+<a name="Prerequisites"> </a>
+###先决条件###
 
-<a name="Exercise1"></a>
-## Exercise 1: Embracing Continuous Delivery with Azure DevOps ##
+-一个Azure帐户（可从[https://azure.com/free](https://azure.com/free）免费获得）。
 
-<a name="Ex1Task1"></a>
-### Task 1: Setting up Azure resources ###
+-按照<a href="../prereq/">先决条件</a>说明完成任务1。
 
-1. Start off by creating the Azure resources needed for this lab. This includes a database and two app services: one for QA and one for production. Log into your account at [https://portal.azure.com](https://portal.azure.com/).
+<a name="Exercise1"> </a>
+##练习1：使用Azure DevOps拥抱持续交付##
 
-1. Click **Create a resource** and search for **"sql"**.
+<a name="Ex1Task1"> </a>
+###任务1：设置Azure资源###
+
+1.首先创建此练习所需的Azure资源。其中包括一个数据库和两个应用程序服务：一个用于质量检查，另一个用于生产。通过[https://portal.azure.com]（https://portal.azure.com/）登录到您的帐户。
+
+1.单击**创建资源**并搜索**“ sql” **。
 
     ![](images/000.png)
-
-1. Select **SQL Database**.
+ 
+1.选择“ SQL数据库”。
 
     ![](images/sql.png)
 
-1. Click **Create**.
+1.单击**创建**。
 
 
-1. Under **Resource group**, click **Create new**.
+1.在“资源组”下，单击“新建”。
 
     ![](images/003.png)
 
-1. Enter a **Name** of **"partsunlimited"** and click **OK**.
+1.输入“ partsunlimited” **的“名称”，然后单击“确定”。
 
     ![](images/004.png)
 
-1. Enter a **Database name** of **"partsunlimited"** and click **Create new** to create a new server.
+1.输入“ partsunlimited” **的“数据库名称” **，然后单击“ Create new”以创建新服务器。
 
     ![](images/005.png)
 
-1. Enter a unique name for **Server name**, such as by including your name. Enter an admin username and password you can remember. Note that **"P2ssw0rd"** meets the password requirements. Click **OK** to confirm these options.
+1.为“服务器名称”输入唯一的名称，例如输入您的名称。输入您可以记住的管理员用户名和密码。请注意，**“ P2ssw0rd” **符合密码要求。单击“确定”以确认这些选项。
 
     ![](images/007.png)
 
-1. In **Compute + storage** select **Configure Database**. click on **looking for basic, standard and premium?** , leave the defaults for standard and click **apply**.
+1.在“计算+存储”中，选择“配置数据库”。单击**查找基本，标准和高级？**，保留标准的默认值，然后单击**应用**。
 
     ![](images/confsql.png)
 
-1. Click **Review + create**.
+1.点击“查看+创建”。
 
     ![](images/008.png)
 
-1. Click **Create**. It'll take some time to complete, but you can move on to the next step while it works in the background.
+1.单击**创建**。这需要一些时间才能完成，但是当它在后台运行时，您可以继续进行下一步。
 
     ![](images/009.png)
 
-1. Click **Create a resource** and search for **"web"**.
+1.单击**创建资源**并搜索**“网络” **。
 
     ![](images/010.png)
 
-1. Select the **Web App** template.
+1.选择“ Web App”模板。
 
     ![](images/webapp.png)
 
-1. Click **Create**.
+1.单击**创建**。
 
 
-1. Under **Project Details**, select the same **Subscription** and **Resource Group** used for the database.
+1.在“项目详细信息”下，选择用于数据库的相同“订阅”和“资源组”。
 
     ![](images/013.png)
 
-1. For **Name**, enter a unique name, such as by using your name as part. Since this will be for our QA deployment, append the name with **"-qa"**. Select the **ASP.NET 4.8 Runtime stack**.
+1.对于“名称”，输入一个唯一的名称，例如使用您的名称作为一部分。由于这将用于我们的质量检查部署，因此请在名称后加上**“-qa” **。选择** ASP.NET 4.8运行时堆栈**。
 
     ![](images/014.png)
 
-1. On **App Service plan** select **create new** and name it **plan**. Change the size to **S1** (under Production).
+1.在“应用服务计划”上，选择“新建”，并将其命名为“计划”。将尺寸更改为** S1 **（在生产中）。
 
     ![](images/s1.png)
 
 
-1. Click **Review and create**.
+1.单击**查看并创建**。
 
     ![](images/015.png)
 
-1. Click **Create**.
+1.单击**创建**。
 
     ![](images/016.png)
 
-1. Repeat the process above to create a second app service for the production stage. This time, append the **Name** with **"-prod"** instead. **You can use the same App Service Plan created before for QA**.
+1.重复上述过程，为生产阶段创建第二个应用程序服务。这次，在** Name **后面附加**“-prod” **。 **您可以使用之前为质量检查创建的同一应用服务计划**。
 
     ![](images/017.png)
 
-1. While the Azure resources are created, go ahead and configure the SQL server.
+1.创建Azure资源后，继续并配置SQL Server。
 
-1. Click the **Resource groups** tab from the left menu. Locate and click the **partsunlimited** group.
+1.单击左侧菜单中的“资源组”选项卡。找到并单击** partsunlimited **组。
 
-1. Click the SQL server resource created earlier.
+1.单击之前创建的SQL Server资源。
 
-1. Select the **Firewalls and virtual networks** tab from the **Security** section.
+1.从“安全性”部分中选择“防火墙和虚拟网络”选项卡。
 
-1. Set **"Allow Azure services and resources to access this server"** to **Yes** to allow the App Services to access this SQL server.
+1.将“允许Azure服务和资源访问此服务器” **设置为“是”，以允许App Services访问此SQL Server。
 
-1. Click **Save** on the top of the tab.
+1.单击选项卡顶部的**保存**。
 
-1. Continue on to the next task. Leave this browser tab open for later.
+1.继续执行下一个任务。将此浏览器选项卡保持打开状态，以便以后使用。
 
-<a name="Ex1Task2"></a>
-### Task 2: Creating a continuous release to the QA stage ###
+<a name="Ex1Task2"> </a>
+###任务2：创建质量检查阶段的连续发布###
 
-1. Navigate to your team project on Azure DevOps in a new browser tab. It should be at [https://dev.azure.com/YOURACCOUNT/Parts%20Unlimited](https://dev.azure.com/YOURACCOUNT/Parts Unlimited).
+1.在新的浏览器选项卡中导航到Azure DevOps上的团队项目。它应该位于[https://dev.azure.com/YOURACCOUNT/Parts%20Unlimited](https://dev.azure.com/YOURACCOUNT/Parts Unlimited）。
 
-1. Navigate to **Pipelines \| Releases**.
+1.导航到** Pipelines \ |发布**。
 
     ![](images/018.png)
 
-1. **Delete** the existing **PartsUnlimitedE2E** release pipeline. We'll start fresh here.
+1. **删除**现有的** PartsUnlimitedE2E **发布管道。我们将从这里重新开始。
 
     ![](images/019.png)
 
-1. Click **New pipeline**.
+1.单击**新建管道**。
 
     ![](images/020.png)
 
-1. There are many starting templates to choose from, or you can even begin with an empty process template. In this case, select the **Azure App Service Deployment** and click **Apply**.
+1.有许多启动模板可供选择，或者甚至可以从一个空的过程模板开始。在这种情况下，请选择“ Azure App Service部署”，然后单击“应用”。
 
     ![](images/021.png)
 
-1. Rename the default stage to **"QA"**. This template will deploy to QA, and then to a production stage. We'll set up this one first.
+1.将默认阶段重命名为“ QA” **。该模板将部署到质量检查，然后部署到生产阶段。我们将首先设置这个。
 
     ![](images/022.png)
 
-1. Rename the release pipeline to **"PUL-CICD"**.
+1.将发布管道重命名为**“ PUL-CICD” **。
 
     ![](images/023.png)
 
-1. The first thing to define is exactly what should be deployed. Click **Add** in the **Artifacts** section to specify the artifact to deploy.
+1.要定义的第一件事就是应该部署的内容。单击“工件”部分中的“添加”以指定要部署的工件。
 
     ![](images/024.png)
 
-1. There are many types of artifacts, but this one will be pretty simple: a project built from the **PartsUnlimitedE2E** build pipeline that already exists in this team project. Click **Add**.
+1.工件的类型很多，但是这将非常简单：通过该Team项目中已经存在的** PartsUnlimitedE2E **构建管道构建的项目。点击**添加**。
 
     ![](images/025.png)
 
-1. Now that the artifact has been defined, it's time to configure the deployment to QA. Click **1 job, 1 task** in the **QA** stage.
+1.现在已经定义了工件，是时候配置部署以进行质量检查了。在“质量检查”阶段中单击“ 1个工作，1个任务”。
 
     ![](images/026.png)
 
-1. Select the **Azure subscription** you used earlier to create the resources and click **Authorize**. If you need to create a connection to an Azure account associated with a different Microsoft account, click **New** and follow that workflow before continuing.
+1.选择之前用于创建资源的“ Azure订阅”，然后单击“授权”。如果需要创建与与其他Microsoft帐户关联的Azure帐户的连接，请单击“新建”并遵循该工作流程，然后再继续。
 
     ![](images/027.png)
 
-1. Follow the workflow to authorize access to your Azure account.
+1.按照工作流程授权对您的Azure帐户的访问。
 
-1. Enter the **App service name** used earlier when creating the QA app service.
+1.输入创建质量检查应用程序服务时先前使用的“应用程序服务名称”。
 
     ![](images/028.png)
 
-1. Return to the **Pipeline** tab.
+1.返回到“管道”选项卡。
 
     ![](images/029.png)
 
-1. Click the **Triggers** button to define what triggers will invoke this deployment.
+1.单击“触发器”按钮以定义哪些触发器将调用此部署。
 
     ![](images/030.png)
 
-1. **Enable** the **Continuous deployment trigger**. Add a **Build branch filter** that points at the **The build pipeline's default branch**. This will kick off the deployment when the build completes.
+1. **启用**连续部署触发器**。添加一个指向“构建管道的默认分支”的“构建分支过滤器”。构建完成后，这将启动部署。
 
     ![](images/031.png)
 
-1. **Save** the release pipeline.
+1. **保存**发布管道。
 
     ![](images/032.png)
 
-<a name="Ex1Task3"></a>
-### Task 3: Configuring the Azure app services ###
+<a name="Ex1Task3"> </a>
+###任务3：配置Azure应用程序服务###
 
-1. Return to the browser tab open to the Azure portal.
+1.返回浏览器选项卡，打开对Azure门户的访问。
 
-1. Click the **Resource groups** tab from the left menu. Locate and click the **partsunlimited** group created earlier.
+1.单击左侧菜单中的“资源组”选项卡。找到并单击先前创建的“ partsunlimited **”组。
 
     ![](images/033.png)
 
-1. Click your SQL database (something like **pul-johndoe/partsunlimited**). Make sure you click the database you created and not the server. Note that it may take a few minutes for the database and server to become available, so click the **Refresh** button every once in a while to check in.
+1.单击您的SQL数据库（类似** pul-johndoe / partsunlimited **）。确保单击创建的数据库而不是服务器。请注意，数据库和服务器可能需要花费几分钟的时间，因此不时单击“刷新”按钮以进行检入。
 
     ![](images/034.png)
 
-1. In the new blade, click **Show database connection strings**.
+1.在新刀片中，单击“显示数据库连接字符串”。
 
     ![](images/035.png)
 
-1. This will provide you with a list of connection strings based on platform. Copy the **ADO.NET** string to your clipboard so you can configure your new web site to use it. Close this blade.
+1.这将为您提供基于平台的连接字符串列表。将** ADO.NET **字符串复制到剪贴板，以便您可以配置新网站以使用它。关闭此刀片。
 
     ![](images/036.png)
 
-1. Open a new instance of **Notepad** and paste the connection string into it. This will make it easier to edit and retrieve later on in case anything happens to the clipboard copy.
+1.打开一个新的** Notepad **实例，然后将连接字符串粘贴到其中。如果剪贴板副本发生任何事情，这将使以后的编辑和检索变得更加容易。
 
-1. Use the breadcrumb navigation to return to the **partsunlimited** resource group.
+1.使用面包屑导航返回** partsunlimited **资源组。
 
     ![](images/037.png)
 
-1. Click the **QA** app service created earlier.
+1.单击之前创建的“ QA”应用程序服务。
 
     ![](images/038.png)
 
-1. Select the **Configuration** tab from the **Settings** section.
+1.从“设置”部分中选择“配置”选项卡。
 
     ![](images/039.png)
 
-1. On this blade you can configure settings for your app, such as connection strings. Click **New connection string**.
+1.在此刀片上，您可以配置应用程序的设置，例如连接字符串。点击**新连接字符串**。
 
     ![](images/040.png)
 
-1. Locate the **Connection strings** section and add a new entry with the key **"DefaultConnectionString"** and the value pasted from the clipboard. You'll need to locate the "{your_username}" and "{your_password}" sections and replace them (including braces) with the actual SQL credentials entered earlier. Be sure the **Type** is set to **SQLAzure** and click **OK**.
+1.找到“连接字符串”部分，并使用键“ DefaultConnectionString” **和从剪贴板粘贴的值添加一个新条目。您需要找到“ {your_username}”和“ {your_password}”部分，并将它们（包括花括号）替换为之前输入的实际SQL凭据。确保将“类型”设置为“ SQLAzure”，然后单击“确定”。
 
     ![](images/041.png)
 
-1. Click **Save** to commit.
+1.单击**保存**进行提交。
 
     ![](images/042.png)
 
-1. Repeat the process above to add the same connection string to the production app service.
+1.重复上述过程，将相同的连接字符串添加到生产应用程序服务。
 
-<a name="Ex1Task4"></a>
-### Task 4: Invoking a continuous delivery release to QA ###
+<a name="Ex1Task4"> </a>
+###任务4：调用持续交付版本以进行质量检查###
 
-1. Return to the browser tab open to your Azure DevOps project.
+1.返回浏览器选项卡，打开您的Azure DevOps项目。
 
-1. Now that the release pipeline is in place, it's time to commit a change in order to invoke a build and release. You'll need to make a few changes like this over the course of this lab, so it's recommended that you use a separate tab for **Code \| Files** to keep that part of the process separate.
+1.现在已经有了发布管道，是时候提交更改以便调用构建和发布了。在本实验的过程中，您需要进行一些类似的更改，因此建议对** Code \ |使用单独的选项卡。文件**，以使过程的这一部分分开。
 
     ![](images/043.png)
 
-1. Navigate to **PartsUnlimited-aspnet45/src/PartsUnlimitedWebsite/Views/Shared/_Layout.cshtml**. This is a file that defines the general layout of the site and is a good place to make a change that will be easily visible after deployment.
+1.导航到** PartsUnlimited-aspnet45 / src / PartsUnlimitedWebsite / Views / Shared / _Layout.cshtml **。这是一个文件，它定义了网站的总体布局，并且是进行更改的好地方，该更改在部署后将很容易看到。
 
     ![](images/044.png)
 
-1. Click **Edit** to edit the file inline.
+1.单击**编辑**以内联编辑文件。
 
     ![](images/045.png)
 
-1. Locate the **Parts Unlimited Logo** and add the text **"v2.0"** after it. This will be an easy thing to check for after deployment.
+1.找到“零件无限制徽标” **，并在其后添加文本“ v2.0” **。部署后检查起来很容易。
 
     ![](images/046.png)
 
-1. **Commit** the changes back to the repo. This will kick off a build based on the preconfigured build pipeline.
+1. **将更改提交回仓库。这将启动基于预先配置的构建管道的构建。
 
     ![](images/047.png)
 
-1. Navigate to the **Pipelines** hub.
+1.导航到** Pipelines **中心。
 
     ![](images/048.png)
 
-1. Open the most recent build for **PartsUnlimitedE2E**. It may be queued, in progress, or already completed.
+1.打开** PartsUnlimitedE2E **的最新版本。它可能正在排队，正在进行或已经完成。
 
     ![](images/049.png)
 
-1. Follow the build until completion.
+1.按照构建进行操作，直到完成。
 
     ![](images/050.png)
 
-1. Click the **Releases** tab to see the new release get going.
+1.单击“发布”选项卡以查看新版本的进展。
 
     ![](images/051.png)
 
-1. Click the release. As with the build, it may be queued, in progress, or already completed when you get here.
+1.单击版本。与构建一样，到达此处时，它可能正在排队，正在进行中或已经完成。
 
     ![](images/052.png)
 
-1. Follow the release until it succeeds.
+1.按照发行版进行操作，直到成功为止。
 
     ![](images/053.png)
 
-1. You can now close this tab if you prefer.
+1.现在，您可以根据需要关闭此选项卡。
 
     ![](images/054.png)
 
-1. In a new browser tab, navigate to the QA site. It will be the name of your app service plus **".azurewebsites.net"**. It should show the **v2.0** added earlier.
+1.在新的浏览器选项卡中，导航到质量检查站点。这将是您的应用程序服务的名称加上**“。azurewebsites.net” **。它应显示先前添加的** v2.0 **。
 
-    <a name="![](images/055.png)"></a>
-     ### ![](images/055.png) ###
+    <a name="![](images/055.png)"> </a>
+     ###![](images/055.png)###
 
-<a name="Ex1Task5"></a>
-### Task 5: Creating a gated release to the production stage ###
+<a name="Ex1Task5"> </a>
+###任务5：在生产阶段创建门控版本###
 
-1. Return to the Azure DevOps browser tab.
+1.返回到Azure DevOps浏览器选项卡。
 
-1. Click on **Pipelines>Pipelines** and click on **Edit** (top-right) to modify the release definition.
+1.单击** Pipelines> Pipelines **，然后单击** Edit **（右上角）以修改版本定义。
 
-1. As release pipelines get more sophisticated, it becomes important to define gates to ensure quality throughout the release pipeline. Since the next stage we're deploying to is production, we'll need to be sure to include both automated quality gates as well as a manual approver gate. Return to the release pipeline browser tab and click **Clone** in the **QA** stage. Since the production stage is virtually the same, we can reuse almost all of the existing configuration.
+1.随着发布管道变得越来越复杂，定义门以确保整个发布管道的质量变得很重要。由于我们将要部署的下一阶段是生产，因此我们需要确保同时包括自动质量门和手动审批门。返回到发布管道浏览器选项卡，然后在“ QA”阶段单击“克隆”。由于生产阶段实际上是相同的，因此我们可以重用几乎所有现有配置。
 
     ![](images/056.png)
 
-1. The new stage is added after the current one, which is what we want. However, before we can consider the QA deployment successful, we'll need to define a post-deployment condition. Click the **Post-deployment conditions** button on the **QA** stage.
+1.将新阶段添加到当前阶段之后，这就是我们想要的。但是，在我们认为质量保证部署成功之前，我们需要定义部署后条件。在“质量检查”阶段中，单击“部署后条件”按钮。
 
     ![](images/057.png)
 
-1. **Enable** the **Gates** option.
+1. **启用**门**选项。
 
     ![](images/058.png)
 
-1. There are several kinds of gates available that can automatically test virtually anything you need to make sure a deployment is in good shape. These could be the return values of Azure functions or REST APIs, queries to Azure for alerts, or work item queries in Azure DevOps. You can also configure how long the platform should delay before evaluating the gates for the first time. In this case, change that to **0** so it will test them immediately after deployment. Then click **Add** \| **Query Work Items**.
+1.有几种可用的门可以自动测试几乎所有您需要的东西，以确保部署状况良好。这些可能是Azure函数或REST API的返回值，对Azure的警报查询或Azure DevOps中的工作项查询。您还可以配置平台在第一次评估门之前应延迟的时间。在这种情况下，请将其更改为** 0 **，这样它将在部署后立即对其进行测试。然后点击**添加** \ | **查询工作项**。
 
     ![](images/059.png)
 
-1. Select the **Query** for **Shared Queries \| Critical Bugs**. We will make it our policy that the QA deployment cannot be considered a success until all critical bugs have been resolved.
+1.选择“查询”作为“共享查询”严重错误**。我们将制定政策，确保在解决所有关键错误之前，不能将质量检查部署视为成功。
 
     ![](images/060.png)
 
-1. Expand **Evaluation options** and update the **Time between re-evaluation of gates** to **5**. If this gate fails, we want it to reevaluate the query every 5 minutes until it clears because engineers will need some time to confirm those critical bugs are fixed in the current version. However, if those bugs aren't cleared and the release isn't manually failed, this configuration will automatically fail the gate after 1 day.
+1.展开**评估选项**，并将**两次重新评估门之间的时间**更新为** 5 **。如果此门操作失败，我们希望它每5分钟重新评估一次查询，直到清除为止，因为工程师将需要一些时间来确认那些关键错误已在当前版本中得到修复。但是，如果未清除这些错误并且发行版本未手动失败，则此配置将在1天后自动使登机门失败。
 
     ![](images/061.png)
 
-1. For the Query Gate to work, Project Build Service would require Read permission to queries. Go to **Azure Boards > Queries > All > Shared Queries > "..." > Security**.
+1.为了使查询门工作，Project Build Service将需要对查询具有读取权限。转到** Azure板>查询>所有>共享查询>“ ...”>安全**。
 
     ![](images/permissions.png)
 
-1. Search for the **"(YOUR PROJECT NAME) Build Service "**, if not included by default (not  Project Collection Build Service!) and give it **Read > Allow** permission.
+1.搜索**“（您的项目名称）构建服务” **（如果默认情况下不包含）（不是Project Collection Build Service！），然后授予它“读取>允许”权限。
 
     ![](images/permissions2.png)
 
-1. We can now turn our focus to the production stage. Select the **Copy of QA** stage.
+1.现在，我们可以将重点转移到生产阶段。选择“复制质量检查”阶段。
 
     ![](images/062.png)
 
-1. Rename it to **"Prod"**.
+1.将其重命名为**“ Prod” **。
 
     ![](images/063.png)
 
-1. Click its **Pre-deployment conditions** button.
+1.单击其“部署前条件”按钮。
 
     ![](images/064.png)
 
-1. **Enable** the **Pre-deployment approvals** and add yourself as an **Approver**. The idea here is that you won't be asked to approve the production deployment until after the QA deployment has succeeded. At that point, someone on this list will need to approve the deployment to production. Also clear the box for **User requesting a release of deployment should not approve** if it's checked. For the purposes of this lab, you can approve releases you have requested.
+1. **启用** **部署前批准**，然后将自己添加为**批准者**。这里的想法是，直到质量检查部署成功后，才要求您批准生产部署。届时，此列表中的某人将需要批准将部署部署到生产环境。另外，请选中“如果请求释放版本的用户不批准”复选框，请选中该复选框。出于本实验的目的，您可以批准所需的发行版。
 
     ![](images/065.png)
 
-1. Click the **Prod** stage's **1 job, 1 task**.
+1.单击** Prod **阶段的** 1个作业，1个任务**。
 
     ![](images/066.png)
 
-1. Update the **App service name** to reflect the "**-prod**" (instead of **"-qa"**).
+1.更新** App服务名称**以反映“ **-prod **”（而不是**“-qa” **）。
 
     ![](images/067.png)
 
-1. **Save** the release pipeline.
+1. **保存**发布管道。
 
     ![](images/068.png)
 
-1. Repeat the process for changing the codebase at **"PartsUnlimited-aspnet45/src/PartsUnlimitedWebsite/Views/Shared/_Layout.cshtml"** followed earlier in a new tab. This time, update the version number from **"2.0"** to **"3.0"**. This will invoke the release pipeline.
+1.在**“ PartsUnlimited-aspnet45 / src / PartsUnlimitedWebsite / Views / Shared / _Layout.cshtml” **上重复更改代码库的过程，随后在新选项卡中进行。这次，将版本号从**“ 2.0” **更新为**“ 3.0” **。这将调用发布管道。
 
-1. As before, follow the release until it is deploying to QA. Click to follow the release itself once available.
+1.与以前一样，遵循该发行版，直到将其部署到质量检查中为止。单击以跟踪该发行版本身（一旦可用）。
 
-1. Eventually there will be an issue with the QA deployment. While it deployed out successfully, one of the quality gates failed. This will need to be resolved for that stage to be approved. Click the **View post-deployment gates** button.
+1.最终，质量检查部署会出现问题。尽管部署成功，但质量门之一失败了。这将需要解决，才能批准该阶段。单击“查看部署后的门”按钮。
 
     ![](images/069.png)
 
-1. It looks like the **Query Work Items** gate is failing. This means that there is a critical bug that must be cleared.
+1.看来“查询工作项”门失败。这意味着必须清除一个严重的错误。
 
     ![](images/070.png)
 
-1. Open a new tab to **Boards \| Queries** to locate the bug.
+1.在** Boards \ |中打开一个新标签。查询**以查找错误。
 
     ![](images/071.png)
 
-1. Use the query list on the **All** tab to open the **Shared Queries \| Critical Bugs** query.
+1.使用“全部”选项卡上的查询列表打开“共享查询”。严重错误**查询。
 
     ![](images/072.png)
 
-1. Open the one bug by clicking it.
+1.单击打开一个错误。
 
     ![](images/073.png)
 
-1. Ordinarily you'd check the site to confirm the bug was fixed, but we'll skip ahead here and mark it **Done**. Click **Save** and close the tab.
+1.通常，您会检查该站点以确认该错误已修复，但是我们将在此处跳过并标记为“完成”。单击**保存**，然后关闭选项卡。
 
     ![](images/074.png)
 
-1. Return to the release pipeline tab. Depending on timing, it may take up to five minutes for Azure DevOps to check the query again. Once it does, the bugs will be cleared and the release will be approved. You can then click **Approve** to approve deployment to production.
+1.返回到发布管道选项卡。根据时间的不同，Azure DevOps最多可能需要五分钟才能再次检查查询。完成后，将清除错误并批准发布。然后，您可以单击“批准”以批准部署到生产环境。
 
     ![](images/075.png)
 
-1. Confirm the deployment.
+1.确认部署。
 
     ![](images/076.png)
 
-1. Click the **In progress** link to follow the release workflow.
+1.单击**进行中**链接以遵循发布工作流程。
 
     ![](images/077.png)
 
-1. It may take a moment for the release to kick off and complete.
+1.发布可能要花一点时间才能开始并完成。
 
     ![](images/078.png)
 
-1. Once the release has completed, open a new tab to the production app service URL. It should be the same as your QA URL, but with **"-prod"** instead of **"-qa"**. Note the **v3.0**.
+1.发布完成后，打开生产应用程序服务URL的新选项卡。它应该与您的质量检查URL相同，但应使用**“-prod” **而不是**“-qa” **。注意** v3.0 **。
 
     ![](images/079.png)
 
-<a name="Ex1Task6"></a>
-### Task 6: Working with deployment slots ###
+<a name="Ex1Task6"> </a>
+###任务6：使用部署槽###
 
-1. Return to the browser window open to the Azure portal.
+1.返回浏览器窗口，该窗口打开到Azure门户。
 
-1. Azure App Services offer **deployment slots**, which are parallel targets for application deployment. The most common scenario for using a deployment slot is to have a staging stage for your application to run against productions services, but without replacing the current production application. If the staging deployment passes review, it can immediately be "swapped" in as the production slot with the click of a button. As an additional benefit, the swap can be quickly reversed in the event an issue is uncovered with the new build. Locate the resource group created earlier and click the **prod** app service.
+1. Azure App Services提供了“部署插槽”，这是应用程序部署的并行目标。使用部署插槽的最常见情况是为应用程序提供一个过渡阶段，以使其针对生产服务运行，但不替换当前的生产应用程序。如果登台部署通过审核，则可以通过单击按钮立即将其“交换”为生产插槽。另外一个好处是，如果新版本发现了问题，交换可以迅速撤消。找到之前创建的资源组，然后单击“产品**”应用程序服务。
 
     ![](images/080.png)
 
-1. Select the **Deployment slots** tab. If you see a message indicating that your current pricing tier does not support slots, follow the workflow to upgrade this service to a **Production** tier or higher and then return here. You may need to refresh the browser for the **Add Slot** option to become enabled.
+1.选择“部署插槽”选项卡。如果您看到一条消息，表明您当前的定价层不支持广告位，请按照工作流程将此服务升级到**生产**层或更高级别，然后返回此处。您可能需要刷新浏览器才能启用“添加插槽”选项。
 
     ![](images/081.png)
 
-1. Click **Add Slot**. Note that the **production** slot is considered a "default" slot and is not shown as a separate slot in the user experience.
+1.单击**添加插槽**。请注意，“生产”插槽被视为“默认”插槽，在用户体验中未显示为单独的插槽。
 
     ![](images/082.png)
 
-1. Enter a **Name** of **"staging"** and select the **Configuration Source** that matched your existing deployment (there should be only one). Click **Add** to create the slot.
+1.输入“阶段” **的名称**，然后选择与现有部署匹配的“配置源”（应该只有一个）。单击**添加**以创建插槽。
 
     ![](images/083.png)
 
-1. Return to the Azure DevOps tab with the **Prod** stage pipeline editor.
+1.使用** Prod **阶段管道编辑器返回到Azure DevOps选项卡。
 
-1. Select the **Deploy Azure App Service** task.
+1.选择“部署Azure应用服务”任务。
 
     ![](images/084.png)
 
-1. Check **Deploy to Slot...** and set the **Resource group** and **Slot** to those created earlier.
+1.选中“部署到插槽...”，然后将“资源组”和“插槽”设置为之前创建的资源。
 
     ![](images/085.png)
 
-1. **Save** the release pipeline.
+1. **保存**发布管道。
 
     ![](images/086.png)
 
-1. Follow the workflow from earlier to commit a change to the codebase at **"PartsUnlimited-aspnet45/src/PartsUnlimitedWebsite/Views/Shared/_Layout.cshtml"** by updating the layout template from **"3.0"** to **"4.0"**.
+1.按照先前的工作流程，通过将布局模板从**“ 3.0” **更新为**“ PartsUnlimited-aspnet45 / src / PartsUnlimitedWebsite / Views / Shared / _Layout.cshtml” **，对代码库进行更改**“ 4.0” **。
 
-1. Follow the release pipeline through deployment and approve the release to production when requested.
+1.按照发布流程进行部署，并在需要时批准将其发布到生产环境。
 
-1. When the production deployment has completed, refresh that browser tab. Note that there shouldn't be any change since the deployment was pushed to a different slot.
+1.生产部署完成后，刷新该浏览器选项卡。请注意，由于部署已推送到其他插槽，因此不应进行任何更改。
 
     ![](images/087.png)
 
-1. Open a new tab to the **staging** slot. This will be the same as your production URL, but with **"-staging"** appended to the app service name within the domain. This should reflect the new **v4.0**.
+1.在“ staging”插槽中打开一个新选项卡。这将与您的生产URL相同，但在域内的应用程序服务名称后会附加**“-staging” **。这应该反映出新的** v4.0 **。
 
     ![](images/088.png)
 
-1. Return to the browser window open to the **Azure portal**. Click **Swap** in the deployment slots blade.
+1.返回浏览器窗口，打开“ Azure门户” **。单击部署插槽刀片中的“交换”。
 
     ![](images/089.png)
 
-1. The default options here are exactly what we want: to swap the production and staging slots. Click **Swap**. Note that if your apps rely on **slot-level configuration settings** (such as connection strings or app settings marked "slot"), then the worker processes will be restarted. If you're working under those circumstances and would like to warm up the app before the swap completes, you can select the **Swap with preview** swap type.
+1.这里的默认选项正是我们想要的：交换生产插槽和登台插槽。点击**交换**。请注意，如果您的应用程序依赖于插槽级别的配置设置（例如连接字符串或标记为“插槽”的应用程序设置），那么工作进程将重新启动。如果您在这种情况下工作，并且想在交换完成之前对应用程序进行预热，则可以选择“使用预览交换”交换类型。
 
     ![](images/090.png)
 
-1. Return to the **prod** browser window (not the staging slot) and refresh. It will now be the 4.0 version.
+1.返回到“产品”浏览器窗口（不是暂存槽）并刷新。现在将是4.0版本。
 
     ![](images/091.png)
-
