@@ -31,7 +31,7 @@ updated: Last updated - 21/03/2021
 <a name="Ex1Task1"> </a>
 ### 任务1：创建Azure资源 ###
 
-1. 此实验室需要将Parts Unlimited项目部署到Azure应用服务中。为此，您将需要旋转必要的基础结构。通过[https://portal.azure.com]（https://portal.azure.com/）登录到您的Azure帐户。
+1. 此实验室需要将Parts Unlimited项目部署到Azure应用服务中。为此，您将需要旋转必要的基础结构。通过 [https://portal.azure.com](https://portal.azure.com/) 登录到您的Azure帐户。
 
 2. 单击 **Create a resource**，然后搜索**Web App + SQL**。
 
