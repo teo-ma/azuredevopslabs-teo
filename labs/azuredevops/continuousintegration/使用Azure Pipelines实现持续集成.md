@@ -35,10 +35,10 @@ width: 48px; height: 48px;">是否需要其他学习方法？请查看<a href =�
 <a name="Ex1Task1"> </a>
 ### 任务1：从模板创建基本构建流水线 ###
 
-1.导航到你的Azure DevOps上的team project。
+ 1.导航到你的Azure DevOps上的team project。
 
 
-1.导航到**Pipelines \| Pipelines**。
+ 1.导航到**Pipelines \| Pipelines**。
 
 ![](images/000.png)
 
