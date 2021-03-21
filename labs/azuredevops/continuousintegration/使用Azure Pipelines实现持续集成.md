@@ -49,8 +49,8 @@ redirect_from: "/labs/vsts/continuousintegration/index.htm"
 ![](images/disable-ci.png)
 
 1. 导航回到 **Pipelines \| Pipelines**，然后单击**New pipeline**以创建新的构建流水线。
-
-![](images/001. png)
+2. 
+![](images/001.png)
 
 1. 构建流水线的默认选项涉及使用YAML定义过程。如果您对此感兴趣，请使用另外的Lab。对于本实验，使用经典模式。单击**use the classic editor**。
 
