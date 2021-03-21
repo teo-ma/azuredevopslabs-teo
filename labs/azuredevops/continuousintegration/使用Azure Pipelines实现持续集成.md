@@ -10,7 +10,7 @@ redirect_from: "/labs/vsts/continuousintegration/index.htm"
 ---
 
 <div class="rw-ui-container"></div>
-<a name="Overview"></a>
+<a name="概述"></a>
 
 ## 概述 ##
 
@@ -20,27 +20,33 @@ redirect_from: "/labs/vsts/continuousintegration/index.htm"
 
 
 <div class="bg-slap"><img src="./images/mslearn.png" class="img-icon-cloud" alt="MS teams" style="
-    width: 48px; height: 48px;">是否需要其他学习方法？请查看 <a href="https://docs.microsoft.com/en-us/learn/modules/create-a-build-pipeline/" target="_blank"><b><u> 在Microsoft Learn上使用Azure Pipelines </u></b></a> 模块创建biuld流水线。</div>
+    width: 48px; height: 48px;">是否需要其他学习方法？请查看 <a href="https://docs.microsoft.com/en-us/learn/modules/create-a-build-pipeline/" target="_blank"><b><u> 在Microsoft Learn上使用Azure Pipelines </u></b></a> 模块创建biuld流水线.</div>
 
 <a name="先决条件"></a>
 
 ### 先决条件 ###
 
 - 本实验要求您先完成 <a href="../prereq/">先决条件</a> 说明中任务1 。
-<a name="Exercise1"> </a>
+
+<a name="Exercise1"></a>
 ## 练习1：Azure DevOps构建简介 ##
 
-<a name="Ex1Task1"> </a>
-
+<a name="Ex1Task1"></a>
 ### 任务1：从模板创建基本构建流水线 ###
 
 1. 导航到你的Azure DevOps上的team project。
+
+
+
+
+
+
 
 1. 导航到**Pipelines \| Pipelines**。
 
   ![](images/000.png)
 
-1. 打开（单击）现有的流水线 **PartsUnlimitedE2E **（由demo生成器工具创建），然后单击 **Edit** 。
+1. 打开（单击）现有的流水线 **PartsUnlimitedE2E**（由demo生成器工具创建），然后单击 **Edit**  。
 
  ![](images/edit-pipeline.png)
 
