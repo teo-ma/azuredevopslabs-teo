@@ -42,7 +42,7 @@ width: 48px; height: 48px;">是否需要其他学习方法？请查看<a href =�
 
 ![](images/000.png)
 
-1.打开（单击）现有的** PartsUnlimitedE2E **流水线（由演示生成器工具创建），然后单击 **Edit** 。
+1.打开（单击）现有的流水线 **PartsUnlimitedE2E **（由demo生成器工具创建），然后单击 **Edit** 。
 
 ![](images/edit-pipeline.png)
 
