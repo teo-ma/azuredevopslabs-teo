@@ -1,5 +1,5 @@
 ---
-title: Azure DevOps Lab Prerequisites
+title: Azure DevOps实验开始前的准备步骤
 layout: page
 sidebar: vsts
 permalink: /labs/azuredevops/prereq/
@@ -7,7 +7,7 @@ folder: /labs/azuredevops/prereq/
 version: Lab version - 1. 38.0
 updated: Last updated - 13/11/2020
 ---
-<aname="概述"></a>
+<a name="概述"></a>
 ## 概述 ##
 某些Azure DevOps实验需要预先配置的 **Parts Unlimited** 团队项目。本文档概述了设置所需数据的必需步骤。
 
@@ -24,7 +24,7 @@ updated: Last updated - 13/11/2020
 
 1. 选择您的Azure DevOps组织，然后输入项目名称 **"Parts Unlimited"**。点击 **Choose Template**。
 
-   ![](images/001. png)
+   ![](images/001.png)
 
 1. 选择 **PartsUnlimited** 模板，然后单击 **Select Template**。
 

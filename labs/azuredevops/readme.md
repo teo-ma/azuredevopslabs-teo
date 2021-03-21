@@ -1,10 +1,10 @@
 ---
-title: Azure DevOps- 动手实验
+title: Azure DevOps实验
 layout: homepage
 sidebar: vsts
 permalink: /labs/azuredevops/
 folder: /labs/azuredevops/
-description: 了解如何使用Azure DevOps更好地计划，一起编码并更快地发布
+description: 提供Level 200-300的动手实验，赋能技术人员及客户使用Azure DevOps更好的实现敏捷业务
 ---
 <div class="vstsMain">
    <div class="productcolmain">
