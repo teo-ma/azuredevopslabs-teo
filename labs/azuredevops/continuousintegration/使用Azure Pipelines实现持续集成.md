@@ -160,4 +160,8 @@ redirect_from: "/labs/vsts/continuousintegration/index.htm"
 
 8. 此构建应像先前的构建一样运行并成功。
 
+<<<<<<< HEAD
  ![](images/027.png)
+=======
+ ![](images/027.png)
+>>>>>>> 491ae5a7aa89c1525fd86591ee73dab29629079d
