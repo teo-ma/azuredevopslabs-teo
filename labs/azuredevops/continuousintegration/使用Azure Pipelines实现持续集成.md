@@ -11,18 +11,16 @@ redirect_from: "/labs/vsts/continuousintegration/index.htm"
 
 <div class="rw-ui-container"></div>
 <a name="Overview"></a>
-# 使用Azure Pipelines实现持续集成
-<div class =“ rw-ui-container”> </ div>
-<a name="概述"></a>
 
 ## 概述 ##
 
 在本实验中，您将学习如何使用Azure Pipelines中的生成和发布为应用程序配置持续集成（CI）和持续部署（CD）。这个可编写脚本的CI / CD系统既是基于Web的又是跨平台的，同时还提供了用于可视化复杂工作流的现代界面。尽管我们不会在本实验中演示所有跨平台的可能性，但需要指出的是，您还可以针对iOS，Android，Java（使用Ant，Maven或Gradle）和Linux进行构建。
 
 
-<div class="bg-slap"><img src="./images/mslearn.png" class="img-icon-cloud" alt="MS teams" style="
-width: 48px; height: 48px;">是否需要其他学习方法？请查看<a href =” https://docs.microsoft.com/en-us/learn/modules/create-a-build-pipeline/“ target =” _ blank“ > <b> <u>在Microsoft Learn上使用Azure Pipelines</ u> </ b> </a>模块创建构建流水线。</ div>
 
+
+<div class="bg-slap"><img src="./images/mslearn.png" class="img-icon-cloud" alt="MS teams" style="
+    width: 48px; height: 48px;">是否需要其他学习方法？请查看 <a href="https://docs.microsoft.com/en-us/learn/modules/create-a-build-pipeline/" target="_blank"><b><u> 在Microsoft Learn上使用Azure Pipelines </u></b></a> 模块创建构建流水线。</div>
 
 <a name="先决条件"></a>
 
