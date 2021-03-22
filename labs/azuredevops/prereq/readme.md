@@ -35,13 +35,13 @@ updated: Last updated - 13/11/2020
    ![](images/003.png)
 
 <a name="Ex0Task2"> </a>
-###任务2：在Visual Studio中配置部件无限解决方案###
+### 任务2：在Visual Studio中配置部件无限解决方案 ###
 
 1. 有些实验室会要求您在 **Visual Studio** 中打开 **Parts Unlimited** 解决方案。如果您的实验室不需要这样做，则可以跳过此任务。
 
 1. 导航到您的Azure DevOps team project以获取“ Parts Unlimited”。类似于[https://dev.azure.com/YOURACCOUNT/Parts%20Unlimited](https://dev.azure.com/YOURACCOUNT/Parts Unlimited).
 
-1. 导航到** Repos **中心。
+1. 导航到 **Repos** 中心。
 
    ![](images/004.png)
 
