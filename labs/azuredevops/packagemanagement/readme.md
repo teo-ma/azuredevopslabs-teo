@@ -159,7 +159,7 @@ redirect_from: "/labs/vsts/packagemanagement/index.htm"
 
 20. 详细信息已导入，现在可供其他人使用。
 
-   ![](images/021. png)
+   ![](images/021.png)
 
 <a name="Ex1Task3"> </a>
 ### 任务3：导入NuGet包 ###
@@ -181,7 +181,7 @@ redirect_from: "/labs/vsts/packagemanagement/index.htm"
 5. 按 **Ctrl+Shift+B** 生成项目。它应该成功。 NuGet包尚未添加任何值，但至少我们知道它在那里。
 
 <a name="Ex1Task4"></a>
-###任务4：更新NuGet软件包###
+### 任务4：更新NuGet软件包 ###
 
 1. 切换到 **Visual Studio** ，打开 **PartsUnlimited.Shared** 项目的（NuGet源项目）。
 
