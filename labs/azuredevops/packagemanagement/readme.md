@@ -80,7 +80,7 @@ redirect_from: "/labs/vsts/packagemanagement/index.htm"
 （如果使用VS2019，请在查找器中查找“类”，然后选择 **Class Library (.NET Framework)**并选择版本4.5.1）
 
     
-   VS2017
+  VS2017
 
 ![](images/007.png)
 
