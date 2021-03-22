@@ -72,7 +72,7 @@ redirect_from: "/labs/vsts/packagemanagement/index.htm"
 1. 关闭并重新打开用于克隆PartsUnlimited存储库的另一个Visual Studio实例（ <a href="../prereq/"> 先决条件 </a> 任务2），以便它显示此新源。
 
 <a name="Ex1Task2"> </a>
-###任务2：创建和发布NuGet包###
+### 任务2：创建和发布NuGet包 ###
 
 1. 从 **Visual Studio**的主菜单中，选择 **File \| New \| Project** （VS2019中的“创建新项目”）。现在，我们将创建一个共享程序集，该程序集将以NuGet程序包的形式发布，以便其他团队可以集成该程序集并保持最新状态，而不必直接与项目源代码合作。
 
@@ -160,7 +160,7 @@ redirect_from: "/labs/vsts/packagemanagement/index.htm"
    ![](images/021. png)
 
 <a name="Ex1Task3"> </a>
-###任务3：导入NuGet包###
+### 任务3：导入NuGet包 ###
 
 1. 切换到 **Visual Studio** ，打开完整的 **Parts Unlimited** 实例。
 
@@ -237,12 +237,12 @@ redirect_from: "/labs/vsts/packagemanagement/index.htm"
 
 1. 在 **Solution Explorer**中，右键单击 **References** 节点，然后选择 **Manage NuGet Packages**。
 
-   ![](images/031. png)
+   ![](images/031.png)
 
 1.  NuGet知道我们的更新，因此请单击 **Updates** 选项卡以查看详细信息。单击 **Updates** 以放下新版本。如果  **Update** 选项卡尚未更新，您仍然可以从 **Browse** 选项卡更新软件包。请注意，可能有许多可用的NuGet更新，但是您只需要更新  **PartsUnlimited.Shared**。请注意，该软件包可能需要一些时间才能完全可用于更新。如果出现错误，请稍等片刻，然后重试。
 
    ![](images/032.png)
 
-1. 如果询问，请单击 **OK** 以批准更新。
+1.  如果询问，请单击 **OK** 以批准更新。
 
-1. 按 **F5** 生成并运行该站点。它应该按预期工作。
+1.  按 **F5** 生成并运行该站点。它应该按预期工作。
