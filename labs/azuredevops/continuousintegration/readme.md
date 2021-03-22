@@ -56,7 +56,7 @@ redirect_from: "/labs/vsts/continuousintegration/index.htm"
 
  ![](images/002.png)
 
-7. 您需要做的第一件事是配置源存储库。每个主要平台都可用，但是这里我们需要所有默认选项。该版本将使用Repo中**PartsUnlimited**的**master**分支。保留默认设置，然后单击 **Continue**。
+7. 您需要做的第一件事是配置源存储库。每个主要平台都可用，但是这里我们需要所有默认选项。该版本将使用Repos中 **PartsUnlimited**的 **master**分支。保留默认设置，然后单击 **Continue**。
 
  ![](images/003.png)
 
@@ -68,11 +68,11 @@ redirect_from: "/labs/vsts/continuousintegration/index.htm"
 
  ![](images/005.png)
 
-10. 选择**Variables** *选项卡。在这里，您可以配置在构建期间要使用的特殊参数，例如配置或平台。
+10. 选择**Variables** 选项卡。在这里，您可以配置在构建期间要使用的特殊参数，例如配置或平台。
 
  ![](images/006.png)
 
-11. 选择**Triggers** 选项卡。这些触发器使您能够按计划，其他构建完成或对源进行更改时自动调用构建。选中**Enable continuous integration**，以便在提交源更改时都会调用此构建。
+11. 选择 **Triggers** 选项卡。这些触发器使您能够按计划，其他构建完成或对源进行更改时自动调用构建。选中**Enable continuous integration**，以便在提交源更改时都会调用此构建。
 
  ![](images/007.png)
 
@@ -80,7 +80,7 @@ redirect_from: "/labs/vsts/continuousintegration/index.htm"
 
  ![](images/008.png)
 
-13. 选择**Retention**选项卡。右键单击**go to the project settings to configure**，然后选择**Open in new tab**。
+13. 选择**Retention**选项卡。右键单击 **go to the project settings to configure**，然后选择**Open in new tab**。
 
  ![](images/009.png)
 
@@ -160,8 +160,7 @@ redirect_from: "/labs/vsts/continuousintegration/index.htm"
 
 8. 此构建应像先前的构建一样运行并成功。
 
-<<<<<<< HEAD
- ![](images/027.png)
+
 =======
  ![](images/027.png)
 >>>>>>> 491ae5a7aa89c1525fd86591ee73dab29629079d
